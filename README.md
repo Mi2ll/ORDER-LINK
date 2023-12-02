@@ -12,11 +12,10 @@
 
 ### Diagramme de Séquences
 
-![Diagramme de Séquences](lien_vers_image_diagramme_sequences.png)
-
+![Diagramme de Séquences](https://media.discordapp.net/attachments/1178650027166548018/1180454772801802330/creer_personnel.jpg?ex=657d7b2d&is=656b062d&hm=6c55348d79916fd5d51828c8b07acec372a4a2bf5e416247ec4efd76c8417b7a&=&format=webp&width=666&height=656)
 ### Diagramme d'Activités
 
-![Diagramme d'Activités](lien_vers_image_diagramme_activites.png)
+![Diagramme d'Activités](https://cdn.discordapp.com/attachments/1178650095567257650/1180454289777381386/Projet_Diagramme_Activite.jpg?ex=657d7aba&is=656b05ba&hm=18ef654254ee24d77164133ace2a0607c7fb1f189b82b6f27624fcb2dcf62c2d&)
 
 ## Environnement de Développement Opérationnel
 
