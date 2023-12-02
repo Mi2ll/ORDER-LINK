@@ -1,3 +1,0 @@
-F:\GitHub\ORDER-LINK\Code_ProjetPOO_Equipe9\projet_poo_equipe9\projet_poo_equipe9\x64\Debug\projet_poo_equipe9.vcxproj.AssemblyReference.cache
-F:\GitHub\ORDER-LINK\Code_ProjetPOO_Equipe9\projet_poo_equipe9\projet_poo_equipe9\x64\Debug\projetpooequipe9.MainForm.resources
-F:\GitHub\ORDER-LINK\Code_ProjetPOO_Equipe9\projet_poo_equipe9\projet_poo_equipe9\x64\Debug\projet_poo_equipe9.vcxproj.GenerateResource.cache
