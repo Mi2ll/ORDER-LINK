@@ -37,7 +37,7 @@ void NS_Comp_Data::CLcad::actionRows(System::String^ sSql)
 
 void NS_Comp_Data::CLcad::actionRowsForId(System::String^ sSql, int id)
 {
-    // Modifiez le SQL en fonction de votre besoin, en utilisant le paramètre d'ID
+    // Modifiez le SQL en fonction de votre besoin, en utilisant le paramÃ¨tre d'ID
     this->sSql = System::String::Format(sSql, id);
 
     this->oCmd->CommandText = this->sSql;
