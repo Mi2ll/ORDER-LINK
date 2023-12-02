@@ -1,3 +1,6 @@
 F:\interfacepoo\interfaceprojetpoo\interfaceprojetpoo\x64\Debug\interfaceprojetpoo.vcxproj.AssemblyReference.cache
 F:\interfacepoo\interfaceprojetpoo\interfaceprojetpoo\x64\Debug\interfaceprojetpoo.MainForm.resources
 F:\interfacepoo\interfaceprojetpoo\interfaceprojetpoo\x64\Debug\interfaceprojetpoo.vcxproj.GenerateResource.cache
+F:\GitHub\ORDER-LINK\test\interfaceprojetpoo\interfaceprojetpoo\x64\Debug\interfaceprojetpoo.vcxproj.AssemblyReference.cache
+F:\GitHub\ORDER-LINK\test\interfaceprojetpoo\interfaceprojetpoo\x64\Debug\interfaceprojetpoo.MainForm.resources
+F:\GitHub\ORDER-LINK\test\interfaceprojetpoo\interfaceprojetpoo\x64\Debug\interfaceprojetpoo.vcxproj.GenerateResource.cache

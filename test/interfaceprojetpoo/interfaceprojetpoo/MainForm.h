@@ -72,6 +72,9 @@ namespace interfaceprojetpoo {
 	private: System::Windows::Forms::TextBox^ textBox6;
 	private: System::Windows::Forms::TextBox^ textBox7;
 
+	private: System::Windows::Forms::Button^ buttonClose;
+
+
 
 
 
@@ -104,6 +107,7 @@ namespace interfaceprojetpoo {
 			System::Windows::Forms::RadioButton^ radioButton2;
 			System::Windows::Forms::RadioButton^ radioButton3;
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->buttonClose = (gcnew System::Windows::Forms::Button());
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
 			this->Title = (gcnew System::Windows::Forms::Label());
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
@@ -119,9 +123,6 @@ namespace interfaceprojetpoo {
 			this->txtbx_nom_personnel = (gcnew System::Windows::Forms::TextBox());
 			this->txtbx_id_personnel = (gcnew System::Windows::Forms::TextBox());
 			this->Clients = (gcnew System::Windows::Forms::TabPage());
-			this->Commandes = (gcnew System::Windows::Forms::TabPage());
-			this->Stock = (gcnew System::Windows::Forms::TabPage());
-			this->Statistiques = (gcnew System::Windows::Forms::TabPage());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
@@ -132,6 +133,9 @@ namespace interfaceprojetpoo {
 			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox7 = (gcnew System::Windows::Forms::TextBox());
+			this->Commandes = (gcnew System::Windows::Forms::TabPage());
+			this->Stock = (gcnew System::Windows::Forms::TabPage());
+			this->Statistiques = (gcnew System::Windows::Forms::TabPage());
 			rb_nouveau_personnel = (gcnew System::Windows::Forms::RadioButton());
 			rb_modifier_personnel = (gcnew System::Windows::Forms::RadioButton());
 			rb_supprimer_personnel = (gcnew System::Windows::Forms::RadioButton());
@@ -180,15 +184,60 @@ namespace interfaceprojetpoo {
 			rb_supprimer_personnel->Text = L"Supprimer";
 			rb_supprimer_personnel->UseVisualStyleBackColor = true;
 			// 
+			// radioButton1
+			// 
+			radioButton1->AutoSize = true;
+			radioButton1->Location = System::Drawing::Point(6, 87);
+			radioButton1->Name = L"radioButton1";
+			radioButton1->Size = System::Drawing::Size(81, 19);
+			radioButton1->TabIndex = 13;
+			radioButton1->TabStop = true;
+			radioButton1->Text = L"Supprimer";
+			radioButton1->UseVisualStyleBackColor = true;
+			// 
+			// radioButton2
+			// 
+			radioButton2->AutoSize = true;
+			radioButton2->Location = System::Drawing::Point(6, 36);
+			radioButton2->Name = L"radioButton2";
+			radioButton2->Size = System::Drawing::Size(73, 19);
+			radioButton2->TabIndex = 11;
+			radioButton2->TabStop = true;
+			radioButton2->Text = L"Nouveau";
+			radioButton2->UseVisualStyleBackColor = true;
+			// 
+			// radioButton3
+			// 
+			radioButton3->AutoSize = true;
+			radioButton3->Location = System::Drawing::Point(6, 61);
+			radioButton3->Name = L"radioButton3";
+			radioButton3->Size = System::Drawing::Size(70, 19);
+			radioButton3->TabIndex = 12;
+			radioButton3->TabStop = true;
+			radioButton3->Text = L"Modifier";
+			radioButton3->UseVisualStyleBackColor = true;
+			// 
 			// panel1
 			// 
 			this->panel1->BackColor = System::Drawing::SystemColors::MenuHighlight;
+			this->panel1->Controls->Add(this->buttonClose);
 			this->panel1->Controls->Add(this->panel3);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
 			this->panel1->Location = System::Drawing::Point(0, 0);
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(1188, 84);
 			this->panel1->TabIndex = 0;
+			// 
+			// buttonClose
+			// 
+			this->buttonClose->BackColor = System::Drawing::Color::Firebrick;
+			this->buttonClose->Location = System::Drawing::Point(1154, 3);
+			this->buttonClose->Name = L"buttonClose";
+			this->buttonClose->Size = System::Drawing::Size(31, 21);
+			this->buttonClose->TabIndex = 1;
+			this->buttonClose->Text = L"X";
+			this->buttonClose->UseVisualStyleBackColor = false;
+			this->buttonClose->Click += gcnew System::EventHandler(this, &MainForm::buttonClose_Click);
 			// 
 			// panel3
 			// 
@@ -349,33 +398,6 @@ namespace interfaceprojetpoo {
 			this->Clients->Text = L"Clients";
 			this->Clients->UseVisualStyleBackColor = true;
 			// 
-			// Commandes
-			// 
-			this->Commandes->Location = System::Drawing::Point(4, 24);
-			this->Commandes->Name = L"Commandes";
-			this->Commandes->Size = System::Drawing::Size(1180, 542);
-			this->Commandes->TabIndex = 2;
-			this->Commandes->Text = L"Commandes";
-			this->Commandes->UseVisualStyleBackColor = true;
-			// 
-			// Stock
-			// 
-			this->Stock->Location = System::Drawing::Point(4, 24);
-			this->Stock->Name = L"Stock";
-			this->Stock->Size = System::Drawing::Size(1180, 542);
-			this->Stock->TabIndex = 3;
-			this->Stock->Text = L"Stock";
-			this->Stock->UseVisualStyleBackColor = true;
-			// 
-			// Statistiques
-			// 
-			this->Statistiques->Location = System::Drawing::Point(4, 24);
-			this->Statistiques->Name = L"Statistiques";
-			this->Statistiques->Size = System::Drawing::Size(1180, 542);
-			this->Statistiques->TabIndex = 4;
-			this->Statistiques->Text = L"Statistiques";
-			this->Statistiques->UseVisualStyleBackColor = true;
-			// 
 			// groupBox1
 			// 
 			this->groupBox1->Controls->Add(radioButton1);
@@ -387,39 +409,6 @@ namespace interfaceprojetpoo {
 			this->groupBox1->TabIndex = 25;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Options";
-			// 
-			// radioButton1
-			// 
-			radioButton1->AutoSize = true;
-			radioButton1->Location = System::Drawing::Point(6, 87);
-			radioButton1->Name = L"radioButton1";
-			radioButton1->Size = System::Drawing::Size(81, 19);
-			radioButton1->TabIndex = 13;
-			radioButton1->TabStop = true;
-			radioButton1->Text = L"Supprimer";
-			radioButton1->UseVisualStyleBackColor = true;
-			// 
-			// radioButton2
-			// 
-			radioButton2->AutoSize = true;
-			radioButton2->Location = System::Drawing::Point(6, 36);
-			radioButton2->Name = L"radioButton2";
-			radioButton2->Size = System::Drawing::Size(73, 19);
-			radioButton2->TabIndex = 11;
-			radioButton2->TabStop = true;
-			radioButton2->Text = L"Nouveau";
-			radioButton2->UseVisualStyleBackColor = true;
-			// 
-			// radioButton3
-			// 
-			radioButton3->AutoSize = true;
-			radioButton3->Location = System::Drawing::Point(6, 61);
-			radioButton3->Name = L"radioButton3";
-			radioButton3->Size = System::Drawing::Size(70, 19);
-			radioButton3->TabIndex = 12;
-			radioButton3->TabStop = true;
-			radioButton3->Text = L"Modifier";
-			radioButton3->UseVisualStyleBackColor = true;
 			// 
 			// button1
 			// 
@@ -491,6 +480,33 @@ namespace interfaceprojetpoo {
 			this->textBox7->Size = System::Drawing::Size(392, 23);
 			this->textBox7->TabIndex = 16;
 			// 
+			// Commandes
+			// 
+			this->Commandes->Location = System::Drawing::Point(4, 24);
+			this->Commandes->Name = L"Commandes";
+			this->Commandes->Size = System::Drawing::Size(1180, 542);
+			this->Commandes->TabIndex = 2;
+			this->Commandes->Text = L"Commandes";
+			this->Commandes->UseVisualStyleBackColor = true;
+			// 
+			// Stock
+			// 
+			this->Stock->Location = System::Drawing::Point(4, 24);
+			this->Stock->Name = L"Stock";
+			this->Stock->Size = System::Drawing::Size(1180, 542);
+			this->Stock->TabIndex = 3;
+			this->Stock->Text = L"Stock";
+			this->Stock->UseVisualStyleBackColor = true;
+			// 
+			// Statistiques
+			// 
+			this->Statistiques->Location = System::Drawing::Point(4, 24);
+			this->Statistiques->Name = L"Statistiques";
+			this->Statistiques->Size = System::Drawing::Size(1180, 542);
+			this->Statistiques->TabIndex = 4;
+			this->Statistiques->Text = L"Statistiques";
+			this->Statistiques->UseVisualStyleBackColor = true;
+			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -520,5 +536,8 @@ namespace interfaceprojetpoo {
 #pragma endregion
 
 
+private: System::Void buttonClose_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Close();
+}
 };
 }
