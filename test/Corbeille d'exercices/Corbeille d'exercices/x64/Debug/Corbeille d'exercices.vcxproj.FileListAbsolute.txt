@@ -1,0 +1,3 @@
+C:\Users\ryder\Documents\GitHub\ORDER-LINK\test\Corbeille d'exercices\Corbeille d'exercices\x64\Debug\Corbeille d'exercices.vcxproj.AssemblyReference.cache
+C:\Users\ryder\Documents\GitHub\ORDER-LINK\test\Corbeille d'exercices\Corbeille d'exercices\x64\Debug\Corbeilledexercices.MyForm.resources
+C:\Users\ryder\Documents\GitHub\ORDER-LINK\test\Corbeille d'exercices\Corbeille d'exercices\x64\Debug\Corbeille d'exercices.vcxproj.GenerateResource.cache
