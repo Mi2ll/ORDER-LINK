@@ -151,12 +151,17 @@ private: System::Windows::Forms::TextBox^ prenom_client;
 private: System::Windows::Forms::TextBox^ nom_client;
 private: System::Windows::Forms::Label^ label19;
 private: System::Windows::Forms::Label^ label18;
-private: System::Windows::Forms::NumericUpDown^ numericUpDown1;
-private: System::Windows::Forms::ComboBox^ comboBox1;
+private: System::Windows::Forms::NumericUpDown^ nb_article;
+
+private: System::Windows::Forms::ComboBox^ article;
+
 private: System::Windows::Forms::Label^ label20;
-private: System::Windows::Forms::NumericUpDown^ numericUpDown2;
-private: System::Windows::Forms::Button^ button1;
-private: System::Windows::Forms::Button^ button2;
+private: System::Windows::Forms::NumericUpDown^ id_commande;
+private: System::Windows::Forms::Button^ btn_ajouter_article;
+private: System::Windows::Forms::Button^ btn_supprimer_article;
+
+
+
 
 private: System::Windows::Forms::Label^ label22;
 
@@ -166,11 +171,15 @@ private: System::Windows::Forms::DataGridView^ dataGridView3;
 private: System::Windows::Forms::Label^ label23;
 private: System::Windows::Forms::DataGridView^ dataGridView2;
 private: System::Windows::Forms::DataGridView^ dataGridView4;
-private: System::Windows::Forms::Button^ button3;
+private: System::Windows::Forms::Button^ btn_afficher_client;
 
-private: System::Windows::Forms::TextBox^ textBox3;
-private: System::Windows::Forms::NumericUpDown^ numericUpDown5;
-private: System::Windows::Forms::NumericUpDown^ numericUpDown4;
+private: System::Windows::Forms::TextBox^ id_client_commande;
+private: System::Windows::Forms::NumericUpDown^ seuilreapro;
+
+
+
+private: System::Windows::Forms::NumericUpDown^ qte_article;
+
 private: System::Windows::Forms::Label^ label28;
 private: System::Windows::Forms::DataGridView^ dataGridView5;
 private: System::Windows::Forms::Label^ label21;
@@ -179,21 +188,33 @@ private: System::Windows::Forms::Label^ label25;
 private: System::Windows::Forms::Label^ label26;
 private: System::Windows::Forms::Label^ label29;
 private: System::Windows::Forms::Label^ label30;
+private: System::Windows::Forms::NumericUpDown^ id_article;
+private: System::Windows::Forms::GroupBox^ option_stock;
+private: System::Windows::Forms::RadioButton^ supprimer_stock;
 
-private: System::Windows::Forms::NumericUpDown^ numericUpDown3;
 
-private: System::Windows::Forms::GroupBox^ groupBox1;
-private: System::Windows::Forms::RadioButton^ radioButton1;
-private: System::Windows::Forms::RadioButton^ radioButton2;
-private: System::Windows::Forms::RadioButton^ radioButton3;
-private: System::Windows::Forms::Button^ button4;
-private: System::Windows::Forms::Button^ button5;
-private: System::Windows::Forms::TextBox^ textBox5;
-private: System::Windows::Forms::TextBox^ textBox7;
-private: System::Windows::Forms::TextBox^ textBox1;
+
+
+
+private: System::Windows::Forms::RadioButton^ nouveau_stock;
+private: System::Windows::Forms::RadioButton^ modifier_stock;
+private: System::Windows::Forms::Button^ btn_confirmer_stock;
+private: System::Windows::Forms::Button^ btn_select_stock;
+
+
+
+
+private: System::Windows::Forms::TextBox^ prix_article;
+
+private: System::Windows::Forms::TextBox^ nom_article;
+private: System::Windows::Forms::TextBox^ couleur_article;
+
+
 private: System::Windows::Forms::Label^ label27;
-private: System::Windows::Forms::ComboBox^ comboBox3;
-private: System::Windows::Forms::ComboBox^ comboBox2;
+private: System::Windows::Forms::ComboBox^ nature_article;
+
+private: System::Windows::Forms::ComboBox^ tva;
+
 private: System::Windows::Forms::Label^ label36;
 private: System::Windows::Forms::Label^ label35;
 private: System::Windows::Forms::Label^ label31;
@@ -273,6 +294,16 @@ private: System::Windows::Forms::TextBox^ textBox8;
 			this->txtbx_prenom_personnel = (gcnew System::Windows::Forms::TextBox());
 			this->txtbx_nom_personnel = (gcnew System::Windows::Forms::TextBox());
 			this->Clients = (gcnew System::Windows::Forms::TabPage());
+			this->label36 = (gcnew System::Windows::Forms::Label());
+			this->label35 = (gcnew System::Windows::Forms::Label());
+			this->label31 = (gcnew System::Windows::Forms::Label());
+			this->label32 = (gcnew System::Windows::Forms::Label());
+			this->label33 = (gcnew System::Windows::Forms::Label());
+			this->label34 = (gcnew System::Windows::Forms::Label());
+			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox8 = (gcnew System::Windows::Forms::TextBox());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label11 = (gcnew System::Windows::Forms::Label());
@@ -297,33 +328,33 @@ private: System::Windows::Forms::TextBox^ textBox8;
 			this->prenom_client = (gcnew System::Windows::Forms::TextBox());
 			this->nom_client = (gcnew System::Windows::Forms::TextBox());
 			this->Commandes = (gcnew System::Windows::Forms::TabPage());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+			this->id_client_commande = (gcnew System::Windows::Forms::TextBox());
 			this->dataGridView4 = (gcnew System::Windows::Forms::DataGridView());
-			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->btn_afficher_client = (gcnew System::Windows::Forms::Button());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->dataGridView3 = (gcnew System::Windows::Forms::DataGridView());
 			this->label23 = (gcnew System::Windows::Forms::Label());
 			this->dataGridView2 = (gcnew System::Windows::Forms::DataGridView());
 			this->label22 = (gcnew System::Windows::Forms::Label());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->btn_supprimer_article = (gcnew System::Windows::Forms::Button());
+			this->btn_ajouter_article = (gcnew System::Windows::Forms::Button());
 			this->label20 = (gcnew System::Windows::Forms::Label());
-			this->numericUpDown2 = (gcnew System::Windows::Forms::NumericUpDown());
+			this->id_commande = (gcnew System::Windows::Forms::NumericUpDown());
 			this->label19 = (gcnew System::Windows::Forms::Label());
 			this->label18 = (gcnew System::Windows::Forms::Label());
-			this->numericUpDown1 = (gcnew System::Windows::Forms::NumericUpDown());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+			this->nb_article = (gcnew System::Windows::Forms::NumericUpDown());
+			this->article = (gcnew System::Windows::Forms::ComboBox());
 			this->btn_supprimer_commande = (gcnew System::Windows::Forms::Button());
 			this->btn_modifier_commande = (gcnew System::Windows::Forms::Button());
 			this->btn_ajouter_commande = (gcnew System::Windows::Forms::Button());
 			this->btn_select_commandes = (gcnew System::Windows::Forms::Button());
 			this->Stock = (gcnew System::Windows::Forms::TabPage());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->couleur_article = (gcnew System::Windows::Forms::TextBox());
 			this->label27 = (gcnew System::Windows::Forms::Label());
-			this->comboBox3 = (gcnew System::Windows::Forms::ComboBox());
-			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
-			this->numericUpDown5 = (gcnew System::Windows::Forms::NumericUpDown());
-			this->numericUpDown4 = (gcnew System::Windows::Forms::NumericUpDown());
+			this->nature_article = (gcnew System::Windows::Forms::ComboBox());
+			this->tva = (gcnew System::Windows::Forms::ComboBox());
+			this->seuilreapro = (gcnew System::Windows::Forms::NumericUpDown());
+			this->qte_article = (gcnew System::Windows::Forms::NumericUpDown());
 			this->label28 = (gcnew System::Windows::Forms::Label());
 			this->dataGridView5 = (gcnew System::Windows::Forms::DataGridView());
 			this->label21 = (gcnew System::Windows::Forms::Label());
@@ -332,26 +363,16 @@ private: System::Windows::Forms::TextBox^ textBox8;
 			this->label26 = (gcnew System::Windows::Forms::Label());
 			this->label29 = (gcnew System::Windows::Forms::Label());
 			this->label30 = (gcnew System::Windows::Forms::Label());
-			this->numericUpDown3 = (gcnew System::Windows::Forms::NumericUpDown());
-			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
-			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
-			this->radioButton3 = (gcnew System::Windows::Forms::RadioButton());
-			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->button5 = (gcnew System::Windows::Forms::Button());
-			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox7 = (gcnew System::Windows::Forms::TextBox());
+			this->id_article = (gcnew System::Windows::Forms::NumericUpDown());
+			this->option_stock = (gcnew System::Windows::Forms::GroupBox());
+			this->supprimer_stock = (gcnew System::Windows::Forms::RadioButton());
+			this->nouveau_stock = (gcnew System::Windows::Forms::RadioButton());
+			this->modifier_stock = (gcnew System::Windows::Forms::RadioButton());
+			this->btn_confirmer_stock = (gcnew System::Windows::Forms::Button());
+			this->btn_select_stock = (gcnew System::Windows::Forms::Button());
+			this->prix_article = (gcnew System::Windows::Forms::TextBox());
+			this->nom_article = (gcnew System::Windows::Forms::TextBox());
 			this->Statistiques = (gcnew System::Windows::Forms::TabPage());
-			this->label31 = (gcnew System::Windows::Forms::Label());
-			this->label32 = (gcnew System::Windows::Forms::Label());
-			this->label33 = (gcnew System::Windows::Forms::Label());
-			this->label34 = (gcnew System::Windows::Forms::Label());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox8 = (gcnew System::Windows::Forms::TextBox());
-			this->label35 = (gcnew System::Windows::Forms::Label());
-			this->label36 = (gcnew System::Windows::Forms::Label());
 			this->panel1->SuspendLayout();
 			this->panel3->SuspendLayout();
 			this->tabControl1->SuspendLayout();
@@ -368,14 +389,14 @@ private: System::Windows::Forms::TextBox^ textBox8;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView4))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown2))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->id_commande))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->nb_article))->BeginInit();
 			this->Stock->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown5))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown4))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->seuilreapro))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->qte_article))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView5))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown3))->BeginInit();
-			this->groupBox1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->id_article))->BeginInit();
+			this->option_stock->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// rb_nouveau_personnel
@@ -747,6 +768,94 @@ private: System::Windows::Forms::TextBox^ textBox8;
 			this->Clients->Text = L"Clients";
 			this->Clients->UseVisualStyleBackColor = true;
 			// 
+			// label36
+			// 
+			this->label36->AutoSize = true;
+			this->label36->Location = System::Drawing::Point(32, 217);
+			this->label36->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label36->Name = L"label36";
+			this->label36->Size = System::Drawing::Size(111, 15);
+			this->label36->TabIndex = 65;
+			this->label36->Text = L"Adresse de livraison";
+			// 
+			// label35
+			// 
+			this->label35->AutoSize = true;
+			this->label35->Location = System::Drawing::Point(262, 217);
+			this->label35->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label35->Name = L"label35";
+			this->label35->Size = System::Drawing::Size(125, 15);
+			this->label35->TabIndex = 64;
+			this->label35->Text = L"Adresse de facturation";
+			// 
+			// label31
+			// 
+			this->label31->AutoSize = true;
+			this->label31->Location = System::Drawing::Point(225, 386);
+			this->label31->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label31->Name = L"label31";
+			this->label31->Size = System::Drawing::Size(30, 15);
+			this->label31->TabIndex = 63;
+			this->label31->Text = L"Ville";
+			// 
+			// label32
+			// 
+			this->label32->AutoSize = true;
+			this->label32->Location = System::Drawing::Point(225, 339);
+			this->label32->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label32->Name = L"label32";
+			this->label32->Size = System::Drawing::Size(69, 15);
+			this->label32->TabIndex = 62;
+			this->label32->Text = L"Code Postal";
+			// 
+			// label33
+			// 
+			this->label33->AutoSize = true;
+			this->label33->Location = System::Drawing::Point(225, 291);
+			this->label33->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label33->Name = L"label33";
+			this->label33->Size = System::Drawing::Size(82, 15);
+			this->label33->TabIndex = 61;
+			this->label33->Text = L"Nom de la rue";
+			// 
+			// label34
+			// 
+			this->label34->AutoSize = true;
+			this->label34->Location = System::Drawing::Point(226, 243);
+			this->label34->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label34->Name = L"label34";
+			this->label34->Size = System::Drawing::Size(87, 15);
+			this->label34->TabIndex = 60;
+			this->label34->Text = L"Numéro de rue";
+			// 
+			// textBox2
+			// 
+			this->textBox2->Location = System::Drawing::Point(228, 358);
+			this->textBox2->Name = L"textBox2";
+			this->textBox2->Size = System::Drawing::Size(204, 23);
+			this->textBox2->TabIndex = 59;
+			// 
+			// textBox4
+			// 
+			this->textBox4->Location = System::Drawing::Point(229, 260);
+			this->textBox4->Name = L"textBox4";
+			this->textBox4->Size = System::Drawing::Size(203, 23);
+			this->textBox4->TabIndex = 58;
+			// 
+			// textBox6
+			// 
+			this->textBox6->Location = System::Drawing::Point(228, 404);
+			this->textBox6->Name = L"textBox6";
+			this->textBox6->Size = System::Drawing::Size(204, 23);
+			this->textBox6->TabIndex = 57;
+			// 
+			// textBox8
+			// 
+			this->textBox8->Location = System::Drawing::Point(228, 310);
+			this->textBox8->Name = L"textBox8";
+			this->textBox8->Size = System::Drawing::Size(204, 23);
+			this->textBox8->TabIndex = 56;
+			// 
 			// dataGridView1
 			// 
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
@@ -963,22 +1072,22 @@ private: System::Windows::Forms::TextBox^ textBox8;
 			// 
 			// Commandes
 			// 
-			this->Commandes->Controls->Add(this->textBox3);
+			this->Commandes->Controls->Add(this->id_client_commande);
 			this->Commandes->Controls->Add(this->dataGridView4);
-			this->Commandes->Controls->Add(this->button3);
+			this->Commandes->Controls->Add(this->btn_afficher_client);
 			this->Commandes->Controls->Add(this->panel2);
 			this->Commandes->Controls->Add(this->dataGridView3);
 			this->Commandes->Controls->Add(this->label23);
 			this->Commandes->Controls->Add(this->dataGridView2);
 			this->Commandes->Controls->Add(this->label22);
-			this->Commandes->Controls->Add(this->button2);
-			this->Commandes->Controls->Add(this->button1);
+			this->Commandes->Controls->Add(this->btn_supprimer_article);
+			this->Commandes->Controls->Add(this->btn_ajouter_article);
 			this->Commandes->Controls->Add(this->label20);
-			this->Commandes->Controls->Add(this->numericUpDown2);
+			this->Commandes->Controls->Add(this->id_commande);
 			this->Commandes->Controls->Add(this->label19);
 			this->Commandes->Controls->Add(this->label18);
-			this->Commandes->Controls->Add(this->numericUpDown1);
-			this->Commandes->Controls->Add(this->comboBox1);
+			this->Commandes->Controls->Add(this->nb_article);
+			this->Commandes->Controls->Add(this->article);
 			this->Commandes->Controls->Add(this->btn_supprimer_commande);
 			this->Commandes->Controls->Add(this->btn_modifier_commande);
 			this->Commandes->Controls->Add(this->btn_ajouter_commande);
@@ -990,12 +1099,12 @@ private: System::Windows::Forms::TextBox^ textBox8;
 			this->Commandes->Text = L"Commandes";
 			this->Commandes->UseVisualStyleBackColor = true;
 			// 
-			// textBox3
+			// id_client_commande
 			// 
-			this->textBox3->Location = System::Drawing::Point(11, 161);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(164, 23);
-			this->textBox3->TabIndex = 68;
+			this->id_client_commande->Location = System::Drawing::Point(11, 161);
+			this->id_client_commande->Name = L"id_client_commande";
+			this->id_client_commande->Size = System::Drawing::Size(164, 23);
+			this->id_client_commande->TabIndex = 68;
 			// 
 			// dataGridView4
 			// 
@@ -1005,14 +1114,14 @@ private: System::Windows::Forms::TextBox^ textBox8;
 			this->dataGridView4->Size = System::Drawing::Size(284, 197);
 			this->dataGridView4->TabIndex = 63;
 			// 
-			// button3
+			// btn_afficher_client
 			// 
-			this->button3->Location = System::Drawing::Point(193, 153);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(74, 40);
-			this->button3->TabIndex = 62;
-			this->button3->Text = L"Afficher liste client";
-			this->button3->UseVisualStyleBackColor = true;
+			this->btn_afficher_client->Location = System::Drawing::Point(193, 153);
+			this->btn_afficher_client->Name = L"btn_afficher_client";
+			this->btn_afficher_client->Size = System::Drawing::Size(74, 40);
+			this->btn_afficher_client->TabIndex = 62;
+			this->btn_afficher_client->Text = L"Afficher liste client";
+			this->btn_afficher_client->UseVisualStyleBackColor = true;
 			// 
 			// panel2
 			// 
@@ -1058,23 +1167,23 @@ private: System::Windows::Forms::TextBox^ textBox8;
 			this->label22->TabIndex = 56;
 			this->label22->Text = L"ID Client";
 			// 
-			// button2
+			// btn_supprimer_article
 			// 
-			this->button2->Location = System::Drawing::Point(472, 320);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(97, 44);
-			this->button2->TabIndex = 53;
-			this->button2->Text = L"Supprimer article";
-			this->button2->UseVisualStyleBackColor = true;
+			this->btn_supprimer_article->Location = System::Drawing::Point(472, 320);
+			this->btn_supprimer_article->Name = L"btn_supprimer_article";
+			this->btn_supprimer_article->Size = System::Drawing::Size(97, 44);
+			this->btn_supprimer_article->TabIndex = 53;
+			this->btn_supprimer_article->Text = L"Supprimer article";
+			this->btn_supprimer_article->UseVisualStyleBackColor = true;
 			// 
-			// button1
+			// btn_ajouter_article
 			// 
-			this->button1->Location = System::Drawing::Point(472, 270);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(97, 44);
-			this->button1->TabIndex = 52;
-			this->button1->Text = L"Ajouter article";
-			this->button1->UseVisualStyleBackColor = true;
+			this->btn_ajouter_article->Location = System::Drawing::Point(472, 270);
+			this->btn_ajouter_article->Name = L"btn_ajouter_article";
+			this->btn_ajouter_article->Size = System::Drawing::Size(97, 44);
+			this->btn_ajouter_article->TabIndex = 52;
+			this->btn_ajouter_article->Text = L"Ajouter article";
+			this->btn_ajouter_article->UseVisualStyleBackColor = true;
 			// 
 			// label20
 			// 
@@ -1086,13 +1195,13 @@ private: System::Windows::Forms::TextBox^ textBox8;
 			this->label20->TabIndex = 51;
 			this->label20->Text = L"ID commande";
 			// 
-			// numericUpDown2
+			// id_commande
 			// 
-			this->numericUpDown2->Location = System::Drawing::Point(182, 31);
-			this->numericUpDown2->Margin = System::Windows::Forms::Padding(2);
-			this->numericUpDown2->Name = L"numericUpDown2";
-			this->numericUpDown2->Size = System::Drawing::Size(163, 23);
-			this->numericUpDown2->TabIndex = 50;
+			this->id_commande->Location = System::Drawing::Point(182, 31);
+			this->id_commande->Margin = System::Windows::Forms::Padding(2);
+			this->id_commande->Name = L"id_commande";
+			this->id_commande->Size = System::Drawing::Size(163, 23);
+			this->id_commande->TabIndex = 50;
 			// 
 			// label19
 			// 
@@ -1114,21 +1223,21 @@ private: System::Windows::Forms::TextBox^ textBox8;
 			this->label18->TabIndex = 48;
 			this->label18->Text = L"Article";
 			// 
-			// numericUpDown1
+			// nb_article
 			// 
-			this->numericUpDown1->Location = System::Drawing::Point(397, 301);
-			this->numericUpDown1->Margin = System::Windows::Forms::Padding(2);
-			this->numericUpDown1->Name = L"numericUpDown1";
-			this->numericUpDown1->Size = System::Drawing::Size(57, 23);
-			this->numericUpDown1->TabIndex = 45;
+			this->nb_article->Location = System::Drawing::Point(397, 301);
+			this->nb_article->Margin = System::Windows::Forms::Padding(2);
+			this->nb_article->Name = L"nb_article";
+			this->nb_article->Size = System::Drawing::Size(57, 23);
+			this->nb_article->TabIndex = 45;
 			// 
-			// comboBox1
+			// article
 			// 
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(11, 301);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(368, 23);
-			this->comboBox1->TabIndex = 15;
+			this->article->FormattingEnabled = true;
+			this->article->Location = System::Drawing::Point(11, 301);
+			this->article->Name = L"article";
+			this->article->Size = System::Drawing::Size(368, 23);
+			this->article->TabIndex = 15;
 			// 
 			// btn_supprimer_commande
 			// 
@@ -1168,12 +1277,12 @@ private: System::Windows::Forms::TextBox^ textBox8;
 			// 
 			// Stock
 			// 
-			this->Stock->Controls->Add(this->textBox1);
+			this->Stock->Controls->Add(this->couleur_article);
 			this->Stock->Controls->Add(this->label27);
-			this->Stock->Controls->Add(this->comboBox3);
-			this->Stock->Controls->Add(this->comboBox2);
-			this->Stock->Controls->Add(this->numericUpDown5);
-			this->Stock->Controls->Add(this->numericUpDown4);
+			this->Stock->Controls->Add(this->nature_article);
+			this->Stock->Controls->Add(this->tva);
+			this->Stock->Controls->Add(this->seuilreapro);
+			this->Stock->Controls->Add(this->qte_article);
 			this->Stock->Controls->Add(this->label28);
 			this->Stock->Controls->Add(this->dataGridView5);
 			this->Stock->Controls->Add(this->label21);
@@ -1182,12 +1291,12 @@ private: System::Windows::Forms::TextBox^ textBox8;
 			this->Stock->Controls->Add(this->label26);
 			this->Stock->Controls->Add(this->label29);
 			this->Stock->Controls->Add(this->label30);
-			this->Stock->Controls->Add(this->numericUpDown3);
-			this->Stock->Controls->Add(this->groupBox1);
-			this->Stock->Controls->Add(this->button4);
-			this->Stock->Controls->Add(this->button5);
-			this->Stock->Controls->Add(this->textBox5);
-			this->Stock->Controls->Add(this->textBox7);
+			this->Stock->Controls->Add(this->id_article);
+			this->Stock->Controls->Add(this->option_stock);
+			this->Stock->Controls->Add(this->btn_confirmer_stock);
+			this->Stock->Controls->Add(this->btn_select_stock);
+			this->Stock->Controls->Add(this->prix_article);
+			this->Stock->Controls->Add(this->nom_article);
 			this->Stock->Location = System::Drawing::Point(4, 24);
 			this->Stock->Name = L"Stock";
 			this->Stock->Size = System::Drawing::Size(1180, 542);
@@ -1195,12 +1304,12 @@ private: System::Windows::Forms::TextBox^ textBox8;
 			this->Stock->Text = L"Stock";
 			this->Stock->UseVisualStyleBackColor = true;
 			// 
-			// textBox1
+			// couleur_article
 			// 
-			this->textBox1->Location = System::Drawing::Point(12, 350);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(402, 23);
-			this->textBox1->TabIndex = 62;
+			this->couleur_article->Location = System::Drawing::Point(12, 350);
+			this->couleur_article->Name = L"couleur_article";
+			this->couleur_article->Size = System::Drawing::Size(402, 23);
+			this->couleur_article->TabIndex = 62;
 			// 
 			// label27
 			// 
@@ -1212,37 +1321,37 @@ private: System::Windows::Forms::TextBox^ textBox8;
 			this->label27->TabIndex = 61;
 			this->label27->Text = L"Couleur";
 			// 
-			// comboBox3
+			// nature_article
 			// 
-			this->comboBox3->FormattingEnabled = true;
-			this->comboBox3->Location = System::Drawing::Point(12, 276);
-			this->comboBox3->Name = L"comboBox3";
-			this->comboBox3->Size = System::Drawing::Size(292, 23);
-			this->comboBox3->TabIndex = 60;
+			this->nature_article->FormattingEnabled = true;
+			this->nature_article->Location = System::Drawing::Point(12, 276);
+			this->nature_article->Name = L"nature_article";
+			this->nature_article->Size = System::Drawing::Size(292, 23);
+			this->nature_article->TabIndex = 60;
 			// 
-			// comboBox2
+			// tva
 			// 
-			this->comboBox2->FormattingEnabled = true;
-			this->comboBox2->Location = System::Drawing::Point(278, 206);
-			this->comboBox2->Name = L"comboBox2";
-			this->comboBox2->Size = System::Drawing::Size(121, 23);
-			this->comboBox2->TabIndex = 59;
+			this->tva->FormattingEnabled = true;
+			this->tva->Location = System::Drawing::Point(278, 206);
+			this->tva->Name = L"tva";
+			this->tva->Size = System::Drawing::Size(121, 23);
+			this->tva->TabIndex = 59;
 			// 
-			// numericUpDown5
+			// seuilreapro
 			// 
-			this->numericUpDown5->Location = System::Drawing::Point(230, 147);
-			this->numericUpDown5->Margin = System::Windows::Forms::Padding(2);
-			this->numericUpDown5->Name = L"numericUpDown5";
-			this->numericUpDown5->Size = System::Drawing::Size(169, 23);
-			this->numericUpDown5->TabIndex = 58;
+			this->seuilreapro->Location = System::Drawing::Point(230, 147);
+			this->seuilreapro->Margin = System::Windows::Forms::Padding(2);
+			this->seuilreapro->Name = L"seuilreapro";
+			this->seuilreapro->Size = System::Drawing::Size(169, 23);
+			this->seuilreapro->TabIndex = 58;
 			// 
-			// numericUpDown4
+			// qte_article
 			// 
-			this->numericUpDown4->Location = System::Drawing::Point(12, 148);
-			this->numericUpDown4->Margin = System::Windows::Forms::Padding(2);
-			this->numericUpDown4->Name = L"numericUpDown4";
-			this->numericUpDown4->Size = System::Drawing::Size(169, 23);
-			this->numericUpDown4->TabIndex = 57;
+			this->qte_article->Location = System::Drawing::Point(12, 148);
+			this->qte_article->Margin = System::Windows::Forms::Padding(2);
+			this->qte_article->Name = L"qte_article";
+			this->qte_article->Size = System::Drawing::Size(169, 23);
+			this->qte_article->TabIndex = 57;
 			// 
 			// label28
 			// 
@@ -1325,90 +1434,90 @@ private: System::Windows::Forms::TextBox^ textBox8;
 			this->label30->TabIndex = 47;
 			this->label30->Text = L"ID Article";
 			// 
-			// numericUpDown3
+			// id_article
 			// 
-			this->numericUpDown3->Location = System::Drawing::Point(12, 30);
-			this->numericUpDown3->Margin = System::Windows::Forms::Padding(2);
-			this->numericUpDown3->Name = L"numericUpDown3";
-			this->numericUpDown3->Size = System::Drawing::Size(169, 23);
-			this->numericUpDown3->TabIndex = 44;
+			this->id_article->Location = System::Drawing::Point(12, 30);
+			this->id_article->Margin = System::Windows::Forms::Padding(2);
+			this->id_article->Name = L"id_article";
+			this->id_article->Size = System::Drawing::Size(169, 23);
+			this->id_article->TabIndex = 44;
 			// 
-			// groupBox1
+			// option_stock
 			// 
-			this->groupBox1->Controls->Add(this->radioButton1);
-			this->groupBox1->Controls->Add(this->radioButton2);
-			this->groupBox1->Controls->Add(this->radioButton3);
-			this->groupBox1->Location = System::Drawing::Point(12, 432);
-			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(130, 105);
-			this->groupBox1->TabIndex = 39;
-			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"Options";
+			this->option_stock->Controls->Add(this->supprimer_stock);
+			this->option_stock->Controls->Add(this->nouveau_stock);
+			this->option_stock->Controls->Add(this->modifier_stock);
+			this->option_stock->Location = System::Drawing::Point(12, 432);
+			this->option_stock->Name = L"option_stock";
+			this->option_stock->Size = System::Drawing::Size(130, 105);
+			this->option_stock->TabIndex = 39;
+			this->option_stock->TabStop = false;
+			this->option_stock->Text = L"Options";
 			// 
-			// radioButton1
+			// supprimer_stock
 			// 
-			this->radioButton1->AutoSize = true;
-			this->radioButton1->Location = System::Drawing::Point(4, 80);
-			this->radioButton1->Name = L"radioButton1";
-			this->radioButton1->Size = System::Drawing::Size(81, 19);
-			this->radioButton1->TabIndex = 13;
-			this->radioButton1->TabStop = true;
-			this->radioButton1->Text = L"Supprimer";
-			this->radioButton1->UseVisualStyleBackColor = true;
+			this->supprimer_stock->AutoSize = true;
+			this->supprimer_stock->Location = System::Drawing::Point(4, 80);
+			this->supprimer_stock->Name = L"supprimer_stock";
+			this->supprimer_stock->Size = System::Drawing::Size(81, 19);
+			this->supprimer_stock->TabIndex = 13;
+			this->supprimer_stock->TabStop = true;
+			this->supprimer_stock->Text = L"Supprimer";
+			this->supprimer_stock->UseVisualStyleBackColor = true;
 			// 
-			// radioButton2
+			// nouveau_stock
 			// 
-			this->radioButton2->AutoSize = true;
-			this->radioButton2->Location = System::Drawing::Point(4, 22);
-			this->radioButton2->Name = L"radioButton2";
-			this->radioButton2->Size = System::Drawing::Size(73, 19);
-			this->radioButton2->TabIndex = 11;
-			this->radioButton2->TabStop = true;
-			this->radioButton2->Text = L"Nouveau";
-			this->radioButton2->UseVisualStyleBackColor = true;
+			this->nouveau_stock->AutoSize = true;
+			this->nouveau_stock->Location = System::Drawing::Point(4, 22);
+			this->nouveau_stock->Name = L"nouveau_stock";
+			this->nouveau_stock->Size = System::Drawing::Size(73, 19);
+			this->nouveau_stock->TabIndex = 11;
+			this->nouveau_stock->TabStop = true;
+			this->nouveau_stock->Text = L"Nouveau";
+			this->nouveau_stock->UseVisualStyleBackColor = true;
 			// 
-			// radioButton3
+			// modifier_stock
 			// 
-			this->radioButton3->AutoSize = true;
-			this->radioButton3->Location = System::Drawing::Point(4, 50);
-			this->radioButton3->Name = L"radioButton3";
-			this->radioButton3->Size = System::Drawing::Size(70, 19);
-			this->radioButton3->TabIndex = 12;
-			this->radioButton3->TabStop = true;
-			this->radioButton3->Text = L"Modifier";
-			this->radioButton3->UseVisualStyleBackColor = true;
+			this->modifier_stock->AutoSize = true;
+			this->modifier_stock->Location = System::Drawing::Point(4, 50);
+			this->modifier_stock->Name = L"modifier_stock";
+			this->modifier_stock->Size = System::Drawing::Size(70, 19);
+			this->modifier_stock->TabIndex = 12;
+			this->modifier_stock->TabStop = true;
+			this->modifier_stock->Text = L"Modifier";
+			this->modifier_stock->UseVisualStyleBackColor = true;
 			// 
-			// button4
+			// btn_confirmer_stock
 			// 
-			this->button4->Location = System::Drawing::Point(175, 440);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(78, 92);
-			this->button4->TabIndex = 38;
-			this->button4->Text = L"Confirmer";
-			this->button4->UseVisualStyleBackColor = true;
+			this->btn_confirmer_stock->Location = System::Drawing::Point(175, 440);
+			this->btn_confirmer_stock->Name = L"btn_confirmer_stock";
+			this->btn_confirmer_stock->Size = System::Drawing::Size(78, 92);
+			this->btn_confirmer_stock->TabIndex = 38;
+			this->btn_confirmer_stock->Text = L"Confirmer";
+			this->btn_confirmer_stock->UseVisualStyleBackColor = true;
 			// 
-			// button5
+			// btn_select_stock
 			// 
-			this->button5->Location = System::Drawing::Point(278, 457);
-			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(136, 59);
-			this->button5->TabIndex = 37;
-			this->button5->Text = L"Afficher le stock";
-			this->button5->UseVisualStyleBackColor = true;
+			this->btn_select_stock->Location = System::Drawing::Point(278, 457);
+			this->btn_select_stock->Name = L"btn_select_stock";
+			this->btn_select_stock->Size = System::Drawing::Size(136, 59);
+			this->btn_select_stock->TabIndex = 37;
+			this->btn_select_stock->Text = L"Afficher le stock";
+			this->btn_select_stock->UseVisualStyleBackColor = true;
 			// 
-			// textBox5
+			// prix_article
 			// 
-			this->textBox5->Location = System::Drawing::Point(12, 206);
-			this->textBox5->Name = L"textBox5";
-			this->textBox5->Size = System::Drawing::Size(192, 23);
-			this->textBox5->TabIndex = 36;
+			this->prix_article->Location = System::Drawing::Point(12, 206);
+			this->prix_article->Name = L"prix_article";
+			this->prix_article->Size = System::Drawing::Size(192, 23);
+			this->prix_article->TabIndex = 36;
 			// 
-			// textBox7
+			// nom_article
 			// 
-			this->textBox7->Location = System::Drawing::Point(12, 87);
-			this->textBox7->Name = L"textBox7";
-			this->textBox7->Size = System::Drawing::Size(387, 23);
-			this->textBox7->TabIndex = 34;
+			this->nom_article->Location = System::Drawing::Point(12, 87);
+			this->nom_article->Name = L"nom_article";
+			this->nom_article->Size = System::Drawing::Size(387, 23);
+			this->nom_article->TabIndex = 34;
 			// 
 			// Statistiques
 			// 
@@ -1418,94 +1527,6 @@ private: System::Windows::Forms::TextBox^ textBox8;
 			this->Statistiques->TabIndex = 4;
 			this->Statistiques->Text = L"Statistiques";
 			this->Statistiques->UseVisualStyleBackColor = true;
-			// 
-			// label31
-			// 
-			this->label31->AutoSize = true;
-			this->label31->Location = System::Drawing::Point(225, 386);
-			this->label31->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			this->label31->Name = L"label31";
-			this->label31->Size = System::Drawing::Size(30, 15);
-			this->label31->TabIndex = 63;
-			this->label31->Text = L"Ville";
-			// 
-			// label32
-			// 
-			this->label32->AutoSize = true;
-			this->label32->Location = System::Drawing::Point(225, 339);
-			this->label32->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			this->label32->Name = L"label32";
-			this->label32->Size = System::Drawing::Size(69, 15);
-			this->label32->TabIndex = 62;
-			this->label32->Text = L"Code Postal";
-			// 
-			// label33
-			// 
-			this->label33->AutoSize = true;
-			this->label33->Location = System::Drawing::Point(225, 291);
-			this->label33->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			this->label33->Name = L"label33";
-			this->label33->Size = System::Drawing::Size(82, 15);
-			this->label33->TabIndex = 61;
-			this->label33->Text = L"Nom de la rue";
-			// 
-			// label34
-			// 
-			this->label34->AutoSize = true;
-			this->label34->Location = System::Drawing::Point(226, 243);
-			this->label34->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			this->label34->Name = L"label34";
-			this->label34->Size = System::Drawing::Size(87, 15);
-			this->label34->TabIndex = 60;
-			this->label34->Text = L"Numéro de rue";
-			// 
-			// textBox2
-			// 
-			this->textBox2->Location = System::Drawing::Point(228, 358);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(204, 23);
-			this->textBox2->TabIndex = 59;
-			// 
-			// textBox4
-			// 
-			this->textBox4->Location = System::Drawing::Point(229, 260);
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(203, 23);
-			this->textBox4->TabIndex = 58;
-			// 
-			// textBox6
-			// 
-			this->textBox6->Location = System::Drawing::Point(228, 404);
-			this->textBox6->Name = L"textBox6";
-			this->textBox6->Size = System::Drawing::Size(204, 23);
-			this->textBox6->TabIndex = 57;
-			// 
-			// textBox8
-			// 
-			this->textBox8->Location = System::Drawing::Point(228, 310);
-			this->textBox8->Name = L"textBox8";
-			this->textBox8->Size = System::Drawing::Size(204, 23);
-			this->textBox8->TabIndex = 56;
-			// 
-			// label35
-			// 
-			this->label35->AutoSize = true;
-			this->label35->Location = System::Drawing::Point(262, 217);
-			this->label35->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			this->label35->Name = L"label35";
-			this->label35->Size = System::Drawing::Size(125, 15);
-			this->label35->TabIndex = 64;
-			this->label35->Text = L"Adresse de facturation";
-			// 
-			// label36
-			// 
-			this->label36->AutoSize = true;
-			this->label36->Location = System::Drawing::Point(32, 217);
-			this->label36->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			this->label36->Name = L"label36";
-			this->label36->Size = System::Drawing::Size(111, 15);
-			this->label36->TabIndex = 65;
-			this->label36->Text = L"Adresse de livraison";
 			// 
 			// MainForm
 			// 
@@ -1541,16 +1562,16 @@ private: System::Windows::Forms::TextBox^ textBox8;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView4))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown2))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->id_commande))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->nb_article))->EndInit();
 			this->Stock->ResumeLayout(false);
 			this->Stock->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown5))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown4))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->seuilreapro))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->qte_article))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView5))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown3))->EndInit();
-			this->groupBox1->ResumeLayout(false);
-			this->groupBox1->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->id_article))->EndInit();
+			this->option_stock->ResumeLayout(false);
+			this->option_stock->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
