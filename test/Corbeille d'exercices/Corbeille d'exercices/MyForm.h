@@ -1535,6 +1535,7 @@ private: System::Windows::Forms::TextBox^ textBox8;
 			this->ClientSize = System::Drawing::Size(1188, 653);
 			this->Controls->Add(this->tabControl1);
 			this->Controls->Add(this->panel1);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Name = L"MainForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"MainForm";
