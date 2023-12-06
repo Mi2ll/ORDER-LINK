@@ -2,7 +2,7 @@
 
 System::String^ NS_Comp_Mappage::CLmapClient::Select(void)
 {
-	return "SELECT * FROM Client LEFT JOIN Adresse on [Client].id_adresse_facture = [Adresse].id_adresse WHERE nom_client LIKE '%" + this->nom_client + "%' and prenom_client LIKE '%" + this->prenom_client + "%'; ";
+	return "SELECT * FROM Client LEFT JOIN Adresse as Adresse_facturation on [Client].id_adresse_facture = [Adresse_facturation].id_adresse JOIN Adresse as Adresse_livraison on [Client].id_adresse_livre = [Adresse_livraison].id_adresse WHERE nom_client LIKE '%" + this->nom_client + "%' and prenom_client LIKE '%" + this->prenom_client + "%'; ";
 }
 System::String^ NS_Comp_Mappage::CLmapClient::Insert(int id_fact, int id_livre)
 {

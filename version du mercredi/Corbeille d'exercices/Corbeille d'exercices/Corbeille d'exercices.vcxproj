@@ -93,6 +93,8 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies />
+      <EntryPointSymbol>WinMain</EntryPointSymbol>
+      <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -126,9 +128,13 @@
     <ClCompile Include="CLmapAdresse.cpp" />
     <ClCompile Include="CLmapArticle.cpp" />
     <ClCompile Include="CLmapClient.cpp" />
+    <ClCompile Include="CLmapCommande.cpp" />
+    <ClCompile Include="CLmapLigneCommande.cpp" />
+    <ClCompile Include="CLmapPaiement.cpp" />
     <ClCompile Include="CLmapPersonnel.cpp" />
     <ClCompile Include="CLserviceClient.cpp" />
     <ClCompile Include="CLservicePersonnel.cpp" />
+    <ClCompile Include="CLServicesCommande.cpp" />
     <ClCompile Include="CLserviceStock.cpp" />
     <ClCompile Include="MyForm.cpp" />
   </ItemGroup>
@@ -137,9 +143,13 @@
     <ClInclude Include="CLmapAdresse.h" />
     <ClInclude Include="CLmapArticle.h" />
     <ClInclude Include="CLmapClient.h" />
+    <ClInclude Include="CLmapCommande.h" />
+    <ClInclude Include="CLmapLigneCommande.h" />
+    <ClInclude Include="CLmapPaiement.h" />
     <ClInclude Include="CLmapPersonnel.h" />
     <ClInclude Include="CLserviceClient.h" />
     <ClInclude Include="CLservicePersonnel.h" />
+    <ClInclude Include="CLservicesCommande.h" />
     <ClInclude Include="CLserviceStock.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>

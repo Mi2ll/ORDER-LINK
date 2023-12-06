@@ -1,0 +1,3 @@
+C:\Users\Nathan Roulland\Documents\GitHub\ORDER-LINK\version du mardi\Mi2ll\ORDER-LINK\version du mardi\Corbeille d'exercices\Corbeille d'exercices\x64\Debug\Corbeille d'exercices.vcxproj.AssemblyReference.cache
+C:\Users\Nathan Roulland\Documents\GitHub\ORDER-LINK\version du mardi\Mi2ll\ORDER-LINK\version du mardi\Corbeille d'exercices\Corbeille d'exercices\x64\Debug\Corbeilledexercices.MyForm.resources
+C:\Users\Nathan Roulland\Documents\GitHub\ORDER-LINK\version du mardi\Mi2ll\ORDER-LINK\version du mardi\Corbeille d'exercices\Corbeille d'exercices\x64\Debug\Corbeille d'exercices.vcxproj.GenerateResource.cache
