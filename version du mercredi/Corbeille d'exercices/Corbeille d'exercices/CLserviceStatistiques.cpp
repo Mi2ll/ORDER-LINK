@@ -9,8 +9,20 @@ NS_Comp_Svc::CLserviceStatistique::CLserviceStatistique(void) {
 }
 
 System::Data::DataSet^ NS_Comp_Svc::CLserviceStatistique::afficherArticleSousLeSeuil(System::String^ dataTableName) {
-
 	System::String^ sql;
 	sql = this->oMappStatistiques->SelectSousSeuilReap();
 	return this->oCad->getRows(sql, dataTableName);
 }
+
+System::Data::DataSet^ NS_Comp_Svc::CLserviceStatistique::afficherArticleMoinsVendu(System::String^ dataTableName) {
+	System::String^ sql;
+	sql = this->oMappStatistiques->SelectLessPopular();
+	return this->oCad->getRows(sql, dataTableName);
+}
+
+System::Data::DataSet^ NS_Comp_Svc::CLserviceStatistique::afficherArticlePlusVendu(System::String^ dataTableName) {
+	System::String^ sql;
+	sql = this->oMappStatistiques->SelectMostPopular();
+	return this->oCad->getRows(sql, dataTableName);
+}
+

@@ -17,5 +17,7 @@ namespace NS_Comp_Svc {
 	public:
 		CLserviceStatistique();
 		System::Data::DataSet^ afficherArticleSousLeSeuil(System::String^ dataTableName);
+		System::Data::DataSet^ afficherArticleMoinsVendu(System::String^ dataTableName);
+		System::Data::DataSet^ afficherArticlePlusVendu(System::String^ dataTableName);
 	};
 }

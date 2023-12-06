@@ -1971,6 +1971,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			this->btn_lesspopular->TabIndex = 115;
 			this->btn_lesspopular->Text = L"10 Articles les moins vendus";
 			this->btn_lesspopular->UseVisualStyleBackColor = true;
+			this->btn_lesspopular->Click += gcnew System::EventHandler(this, &MainForm::btn_lesspopular_Click);
 			// 
 			// groupBox1
 			// 
@@ -2256,6 +2257,12 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 	private: System::Void btn_select_item_in_reap_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->dataGridView6->Refresh();
 		this->oDs = this->oSvcStats->afficherArticleSousLeSeuil("Rsl");
+		this->dataGridView6->DataSource = this->oDs;
+		this->dataGridView6->DataMember = "Rsl";
+	}
+	private: System::Void btn_lesspopular_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->dataGridView6->Refresh();
+		this->oDs = this->oSvcStats->afficherArticleMoinsVendu("Rsl");
 		this->dataGridView6->DataSource = this->oDs;
 		this->dataGridView6->DataMember = "Rsl";
 	}
