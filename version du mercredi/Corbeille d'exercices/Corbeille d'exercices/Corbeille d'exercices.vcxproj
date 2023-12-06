@@ -132,9 +132,11 @@
     <ClCompile Include="CLmapLigneCommande.cpp" />
     <ClCompile Include="CLmapPaiement.cpp" />
     <ClCompile Include="CLmapPersonnel.cpp" />
+    <ClCompile Include="CLmapStatistiques.cpp" />
     <ClCompile Include="CLserviceClient.cpp" />
     <ClCompile Include="CLservicePersonnel.cpp" />
     <ClCompile Include="CLServicesCommande.cpp" />
+    <ClCompile Include="CLserviceStatistiques.cpp" />
     <ClCompile Include="CLserviceStock.cpp" />
     <ClCompile Include="MyForm.cpp" />
   </ItemGroup>
@@ -147,9 +149,11 @@
     <ClInclude Include="CLmapLigneCommande.h" />
     <ClInclude Include="CLmapPaiement.h" />
     <ClInclude Include="CLmapPersonnel.h" />
+    <ClInclude Include="CLmapStatistiques.h" />
     <ClInclude Include="CLserviceClient.h" />
     <ClInclude Include="CLservicePersonnel.h" />
     <ClInclude Include="CLservicesCommande.h" />
+    <ClInclude Include="CLserviceStatistiques.h" />
     <ClInclude Include="CLserviceStock.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
