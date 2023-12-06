@@ -2,6 +2,7 @@
 #include "CLservicePersonnel.h"
 #include "CLserviceClient.h"
 #include "CLserviceStock.h"
+#include "CLserviceStatistiques.h"
 
 namespace interfaceprojetpoo {
 
@@ -58,6 +59,7 @@ namespace interfaceprojetpoo {
 	private: NS_Comp_Svc::CLservicesClient^ oSvcClient;
 	private: NS_Comp_Svc::CLservicesPersonnel^ oSvc;
 	private: NS_Comp_Svc::CLservicestock^ oSvcS;
+	private: NS_Comp_Svc::CLserviceStatistique^ oSvcStats;
 	private: System::Data::DataSet^ oDs;
 	private: System::Windows::Forms::TextBox^ txtbx_prenom_personnel;
 
@@ -620,7 +622,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			this->Personnel->Controls->Add(this->txtbx_nom_personnel);
 			this->Personnel->Location = System::Drawing::Point(4, 24);
 			this->Personnel->Name = L"Personnel";
-			this->Personnel->Padding = System::Windows::Forms::Padding(3, 3, 3, 3);
+			this->Personnel->Padding = System::Windows::Forms::Padding(3);
 			this->Personnel->Size = System::Drawing::Size(1187, 542);
 			this->Personnel->TabIndex = 0;
 			this->Personnel->Text = L"Personnel";
@@ -630,7 +632,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			// 
 			this->dgv_enr->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgv_enr->Location = System::Drawing::Point(466, 7);
-			this->dgv_enr->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->dgv_enr->Margin = System::Windows::Forms::Padding(2);
 			this->dgv_enr->Name = L"dgv_enr";
 			this->dgv_enr->RowHeadersWidth = 62;
 			this->dgv_enr->RowTemplate->Height = 28;
@@ -737,7 +739,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			// id_personnel
 			// 
 			this->id_personnel->Location = System::Drawing::Point(12, 26);
-			this->id_personnel->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->id_personnel->Margin = System::Windows::Forms::Padding(2);
 			this->id_personnel->Name = L"id_personnel";
 			this->id_personnel->Size = System::Drawing::Size(163, 23);
 			this->id_personnel->TabIndex = 20;
@@ -759,7 +761,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			// id_superieur
 			// 
 			this->id_superieur->Location = System::Drawing::Point(240, 26);
-			this->id_superieur->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->id_superieur->Margin = System::Windows::Forms::Padding(2);
 			this->id_superieur->Name = L"id_superieur";
 			this->id_superieur->Size = System::Drawing::Size(163, 23);
 			this->id_superieur->TabIndex = 17;
@@ -769,7 +771,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			this->date_embauche->CustomFormat = L"yyyy-MM-dd";
 			this->date_embauche->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
 			this->date_embauche->Location = System::Drawing::Point(12, 193);
-			this->date_embauche->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->date_embauche->Margin = System::Windows::Forms::Padding(2);
 			this->date_embauche->Name = L"date_embauche";
 			this->date_embauche->Size = System::Drawing::Size(392, 23);
 			this->date_embauche->TabIndex = 16;
@@ -868,7 +870,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			this->Clients->Controls->Add(this->nom_client);
 			this->Clients->Location = System::Drawing::Point(4, 24);
 			this->Clients->Name = L"Clients";
-			this->Clients->Padding = System::Windows::Forms::Padding(3, 3, 3, 3);
+			this->Clients->Padding = System::Windows::Forms::Padding(3);
 			this->Clients->Size = System::Drawing::Size(1187, 542);
 			this->Clients->TabIndex = 1;
 			this->Clients->Text = L"Clients";
@@ -878,7 +880,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			// 
 			this->client_suivant->Enabled = false;
 			this->client_suivant->Location = System::Drawing::Point(370, 515);
-			this->client_suivant->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->client_suivant->Margin = System::Windows::Forms::Padding(2);
 			this->client_suivant->Name = L"client_suivant";
 			this->client_suivant->Size = System::Drawing::Size(48, 20);
 			this->client_suivant->TabIndex = 68;
@@ -890,7 +892,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			// 
 			this->client_precedent->Enabled = false;
 			this->client_precedent->Location = System::Drawing::Point(282, 515);
-			this->client_precedent->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->client_precedent->Margin = System::Windows::Forms::Padding(2);
 			this->client_precedent->Name = L"client_precedent";
 			this->client_precedent->Size = System::Drawing::Size(48, 20);
 			this->client_precedent->TabIndex = 67;
@@ -901,7 +903,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			// btn_copier_adresse
 			// 
 			this->btn_copier_adresse->Location = System::Drawing::Point(190, 213);
-			this->btn_copier_adresse->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btn_copier_adresse->Margin = System::Windows::Forms::Padding(2);
 			this->btn_copier_adresse->Name = L"btn_copier_adresse";
 			this->btn_copier_adresse->Size = System::Drawing::Size(55, 28);
 			this->btn_copier_adresse->TabIndex = 66;
@@ -1001,7 +1003,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			// 
 			this->dgv_client->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgv_client->Location = System::Drawing::Point(466, 7);
-			this->dgv_client->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->dgv_client->Margin = System::Windows::Forms::Padding(2);
 			this->dgv_client->Name = L"dgv_client";
 			this->dgv_client->RowHeadersWidth = 62;
 			this->dgv_client->RowTemplate->Height = 28;
@@ -1098,7 +1100,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			// id_client
 			// 
 			this->id_client->Location = System::Drawing::Point(12, 26);
-			this->id_client->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->id_client->Margin = System::Windows::Forms::Padding(2);
 			this->id_client->Name = L"id_client";
 			this->id_client->Size = System::Drawing::Size(163, 23);
 			this->id_client->TabIndex = 44;
@@ -1122,7 +1124,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			this->date_naissance->CustomFormat = L"yyyy-MM-dd";
 			this->date_naissance->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
 			this->date_naissance->Location = System::Drawing::Point(12, 172);
-			this->date_naissance->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->date_naissance->Margin = System::Windows::Forms::Padding(2);
 			this->date_naissance->Name = L"date_naissance";
 			this->date_naissance->Size = System::Drawing::Size(420, 23);
 			this->date_naissance->TabIndex = 40;
@@ -1345,7 +1347,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			// id_commande
 			// 
 			this->id_commande->Location = System::Drawing::Point(182, 31);
-			this->id_commande->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->id_commande->Margin = System::Windows::Forms::Padding(2);
 			this->id_commande->Name = L"id_commande";
 			this->id_commande->Size = System::Drawing::Size(163, 23);
 			this->id_commande->TabIndex = 50;
@@ -1373,7 +1375,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			// nb_article
 			// 
 			this->nb_article->Location = System::Drawing::Point(397, 301);
-			this->nb_article->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->nb_article->Margin = System::Windows::Forms::Padding(2);
 			this->nb_article->Name = L"nb_article";
 			this->nb_article->Size = System::Drawing::Size(57, 23);
 			this->nb_article->TabIndex = 45;
@@ -1487,7 +1489,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			// seuilreapro
 			// 
 			this->seuilreapro->Location = System::Drawing::Point(230, 147);
-			this->seuilreapro->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->seuilreapro->Margin = System::Windows::Forms::Padding(2);
 			this->seuilreapro->Name = L"seuilreapro";
 			this->seuilreapro->Size = System::Drawing::Size(169, 23);
 			this->seuilreapro->TabIndex = 58;
@@ -1495,7 +1497,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			// qte_article
 			// 
 			this->qte_article->Location = System::Drawing::Point(12, 148);
-			this->qte_article->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->qte_article->Margin = System::Windows::Forms::Padding(2);
 			this->qte_article->Name = L"qte_article";
 			this->qte_article->Size = System::Drawing::Size(169, 23);
 			this->qte_article->TabIndex = 57;
@@ -1514,7 +1516,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			// 
 			this->dataGridView5->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView5->Location = System::Drawing::Point(450, 7);
-			this->dataGridView5->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->dataGridView5->Margin = System::Windows::Forms::Padding(2);
 			this->dataGridView5->Name = L"dataGridView5";
 			this->dataGridView5->RowHeadersWidth = 62;
 			this->dataGridView5->RowTemplate->Height = 28;
@@ -1584,7 +1586,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			// id_article
 			// 
 			this->id_article->Location = System::Drawing::Point(12, 30);
-			this->id_article->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->id_article->Margin = System::Windows::Forms::Padding(2);
 			this->id_article->Name = L"id_article";
 			this->id_article->Size = System::Drawing::Size(169, 23);
 			this->id_article->TabIndex = 44;
@@ -2017,6 +2019,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			this->btn_select_item_in_reap->TabIndex = 113;
 			this->btn_select_item_in_reap->Text = L"Afficher les articles sous le seuil de réapprovisionnement";
 			this->btn_select_item_in_reap->UseVisualStyleBackColor = true;
+			this->btn_select_item_in_reap->Click += gcnew System::EventHandler(this, &MainForm::btn_select_item_in_reap_Click);
 			// 
 			// dataGridView6
 			// 
@@ -2091,6 +2094,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 		this->oSvc = gcnew NS_Comp_Svc::CLservicesPersonnel();
 		this->oSvcClient = gcnew NS_Comp_Svc::CLservicesClient();
 		this->oSvcS = gcnew NS_Comp_Svc::CLservicestock();
+		this->oSvcStats = gcnew NS_Comp_Svc::CLserviceStatistique();
 	}
 	private: System::Void buttonClose_Click(System::Object^ sender, System::EventArgs^ e)
 	{
@@ -2248,6 +2252,12 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			this->client_suivant->Enabled = false;
 		}
 		this->client_precedent->Enabled = true;
+	}
+	private: System::Void btn_select_item_in_reap_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->dataGridView6->Refresh();
+		this->oDs = this->oSvcStats->afficherArticleSousLeSeuil("Rsl");
+		this->dataGridView6->DataSource = this->oDs;
+		this->dataGridView6->DataMember = "Rsl";
 	}
 };
 }

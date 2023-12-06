@@ -15,7 +15,7 @@ namespace NS_Comp_Mappage {
 		System::String^ SelectSousSeuilReap(void);
 		System::String^ SelectLessPopular(void);
 		System::String^ SelectMostPopular(void);
-		System::String^ SelectChiffreAffaire(void);
+		//System::String^ SelectChiffreAffaire(void);
 
 		void setTva(System::String^);
 		void setMargeCommerciale(System::String^);

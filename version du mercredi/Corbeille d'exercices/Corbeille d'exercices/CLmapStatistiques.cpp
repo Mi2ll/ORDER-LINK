@@ -14,13 +14,14 @@ void NS_Comp_Mappage::CLmapStatistiques::setTva(System::String^ remise_tva) { th
 
 
 System::String^ NS_Comp_Mappage::CLmapStatistiques::SelectLessPopular(void) {
-	return "SELECT ligne_commande.id_article, SUM(ligne_commande.qte_commandee) FROM ligne_commande FULL OUTER JOIN id_article ON ligne_commande.id_article = Article.id_article";
+	return "SELECT ligne_commande.id_article, SUM(ligne_commande.qte_commandee) FROM ligne_commande FULL OUTER JOIN id_article ON ligne_commande.id_article = Article.id_article GROUP BY ligne_commande.id_article";
 }
-System::String^ NS_Comp_Mappage::CLmapStatistiques::SelectMostPopular(void) {
 
+System::String^ NS_Comp_Mappage::CLmapStatistiques::SelectMostPopular(void) {
+	return "SELECT ligne_commande.id_article, SUM(ligne_commande.qte_commandee) FROM ligne_commande FULL OUTER JOIN id_article ON ligne_commande.id_article = Article.id_article GROUP BY ligne_commande.id_article";
 }
 System::String^ NS_Comp_Mappage::CLmapStatistiques::SelectSousSeuilReap(void) {
-	return "SELECT * FROM Article WHERE qte_stock < seuil_reapprovisionnement";
+	return "SELECT * FROM Article WHERE qte_stock < seuil_reappro";
 }
 
 

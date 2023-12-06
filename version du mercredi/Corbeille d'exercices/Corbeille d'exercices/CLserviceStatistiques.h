@@ -16,5 +16,6 @@ namespace NS_Comp_Svc {
 
 	public:
 		CLserviceStatistique();
+		System::Data::DataSet^ afficherArticleSousLeSeuil(System::String^ dataTableName);
 	};
 }
