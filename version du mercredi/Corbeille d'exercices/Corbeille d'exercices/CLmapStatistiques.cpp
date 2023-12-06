@@ -22,12 +22,25 @@ System::String^ NS_Comp_Mappage::CLmapStatistiques::SelectLessPopular(void) {
 }
 
 System::String^ NS_Comp_Mappage::CLmapStatistiques::SelectMostPopular(void) {
-	return "SELECT Article.id_article, SUM(ligne_commande.qte_commandee) FROM ligne_commande FULL OUTER JOIN id_article ON ligne_commande.id_article = Article.id_article GROUP BY Article.id_article";
+    return "SELECT TOP 10 Article.id_article, SUM(ligne_commande.qte_commandee) AS TotalQteCommandee "
+        "FROM ligne_commande "
+        "FULL OUTER JOIN Article ON ligne_commande.id_article = Article.id_article "
+        "GROUP BY Article.id_article "
+        "ORDER BY TotalQteCommandee DESC";
 }
 System::String^ NS_Comp_Mappage::CLmapStatistiques::SelectSousSeuilReap(void) {
-	return "SELECT * FROM Article WHERE qte_stock < seuil_reappro";
+	return "SELECT * FROM Article "
+           "WHERE qte_stock < seuil_reappro";
 }
 
+System::String^ NS_Comp_Mappage::CLmapStatistiques::SelectChiffreAffaire() {
+    return "SELECT SUM(paiement.montant_paye) AS Chiffre_affaire "
+           "FROM paiement "
+           "FULL OUTER JOIN Commande ON Commande.id_commande = paiment.id_paiement "
+           "FULL OUTER JOIN ligne_commande ON ligne_commande.id_ligne_commande = Commande.id_commande "
+           "WHERE YEAR(Commande.date_cmd) = YEAR('" + this->date_chiffre_affaire + "') "
+           "AND MONTH(Commande.date_cmd) = MONTH('" + this->date_chiffre_affaire + "')";
+}
 
 
 

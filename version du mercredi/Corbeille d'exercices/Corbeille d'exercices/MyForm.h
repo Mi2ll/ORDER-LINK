@@ -1472,6 +1472,8 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			// 
 			// nature_article
 			// 
+			this->nature_article->AutoCompleteMode = System::Windows::Forms::AutoCompleteMode::SuggestAppend;
+			this->nature_article->AutoCompleteSource = System::Windows::Forms::AutoCompleteSource::ListItems;
 			this->nature_article->FormattingEnabled = true;
 			this->nature_article->Items->AddRange(gcnew cli::array< System::Object^  >(11) {
 				L"Smartphones et tablettes", L"Ordinateurs et ordinateurs portables",
@@ -1482,8 +1484,6 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			this->nature_article->Name = L"nature_article";
 			this->nature_article->Size = System::Drawing::Size(292, 23);
 			this->nature_article->TabIndex = 60;
-			this->nature_article->AutoCompleteMode = System::Windows::Forms::AutoCompleteMode::SuggestAppend;
-			this->nature_article->AutoCompleteSource = System::Windows::Forms::AutoCompleteSource::ListItems;
 			// 
 			// tva
 			// 
@@ -1970,6 +1970,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			this->btn_mostpopular->TabIndex = 116;
 			this->btn_mostpopular->Text = L"10 Articles les plus vendus";
 			this->btn_mostpopular->UseVisualStyleBackColor = true;
+			this->btn_mostpopular->Click += gcnew System::EventHandler(this, &MainForm::btn_mostpopular_Click);
 			// 
 			// btn_lesspopular
 			// 
@@ -2001,6 +2002,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			this->calculer_chiffre_affaire->TabIndex = 112;
 			this->calculer_chiffre_affaire->Text = L"Calculer";
 			this->calculer_chiffre_affaire->UseVisualStyleBackColor = true;
+			this->calculer_chiffre_affaire->Click += gcnew System::EventHandler(this, &MainForm::calculer_chiffre_affaire_Click);
 			// 
 			// dateTimePicker2
 			// 
@@ -2274,6 +2276,16 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 		this->dataGridView6->DataSource = this->oDs;
 		this->dataGridView6->DataMember = "Rsl";
 	}
+	private: System::Void btn_mostpopular_Click(System::Object^ sender, System::EventArgs^ e) {
+		
+		this->dataGridView6->Refresh();
+		this->oDs = this->oSvcStats->afficherArticlePlusVendu("Rsl");
+		this->dataGridView6->DataSource = this->oDs;
+		this->dataGridView6->DataMember = "Rsl";
+	}
+private: System::Void calculer_chiffre_affaire_Click(System::Object^ sender, System::EventArgs^ e) {
+	//à compléter
+}
 };
 }
 	
