@@ -1,0 +1,4 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: Le répertoire intermédiaire (Debug\) contient des fichiers partagés provenant d'un autre projet (Corbeille d'exercices.vcxproj). Cela peut entraîner un comportement de nettoyage et de regénération incorrect.
+  MyForm.cpp
+  CLCAD.obj : module MSIL détecté ; liens incrémentiels désactivés pour MSIL ; édition de liens complète en cours
+  Corbeille d'exercices.vcxproj -> C:\Users\Nathan Roulland\source\repos\Corbeille d'exercices\Debug\testWin.exe
