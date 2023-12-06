@@ -1473,14 +1473,22 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			// nature_article
 			// 
 			this->nature_article->FormattingEnabled = true;
+			this->nature_article->Items->AddRange(gcnew cli::array< System::Object^  >(11) {
+				L"Smartphones et tablettes", L"Ordinateurs et ordinateurs portables",
+					L"Appareils audio et vidéo", L"Appareils photo et caméras", L"Accessoires électroniques ", L"Équipements de jeu ", L"Équipements de bureau ",
+					L"Composants électroniques", L"Équipements de réseau", L"Produits domotiques ", L"Équipements médicaux électroniques"
+			});
 			this->nature_article->Location = System::Drawing::Point(12, 276);
 			this->nature_article->Name = L"nature_article";
 			this->nature_article->Size = System::Drawing::Size(292, 23);
 			this->nature_article->TabIndex = 60;
+			this->nature_article->AutoCompleteMode = System::Windows::Forms::AutoCompleteMode::SuggestAppend;
+			this->nature_article->AutoCompleteSource = System::Windows::Forms::AutoCompleteSource::ListItems;
 			// 
 			// tva
 			// 
 			this->tva->FormattingEnabled = true;
+			this->tva->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"0.20", L"0.055", L"0.021" });
 			this->tva->Location = System::Drawing::Point(278, 206);
 			this->tva->Name = L"tva";
 			this->tva->Size = System::Drawing::Size(121, 23);
