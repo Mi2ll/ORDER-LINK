@@ -30,7 +30,12 @@ System::Data::DataSet^ NS_Comp_Svc::CLserviceStatistique::afficherChiffreAffMois
 	this->oMappStatistiques->setDateChiffreAffaire(date_chiffre_affaire);
 	System::String^ sql;
 	sql = this->oMappStatistiques->SelectChiffreAffaire();
-	//return this->oCad->actionRowsID(sql);
 	return this->oCad->getRows(sql, dataTableName);
 }
 
+System::Data::DataSet^ NS_Comp_Svc::CLserviceStatistique::afficherMontantAchatClient(System::String^ dataTableName, System::String^ id_client) {
+	this->oMappStatistiques->setIdClient(System::Convert::ToInt32(id_client));
+	System::String^ sql;
+	sql = this->oMappStatistiques->SelectClientMontantAchat();
+	return this->oCad->getRows(sql, dataTableName);
+}

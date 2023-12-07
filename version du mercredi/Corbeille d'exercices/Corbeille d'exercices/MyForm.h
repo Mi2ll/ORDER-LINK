@@ -306,6 +306,14 @@ private: System::Windows::Forms::DateTimePicker^ dateTimePicker2;
 private: System::Windows::Forms::TextBox^ chiffre_affaire;
 private: System::Windows::Forms::Button^ btn_select_item_in_reap;
 private: System::Windows::Forms::DataGridView^ dataGridView6;
+private: System::Windows::Forms::GroupBox^ groupBox4;
+private: System::Windows::Forms::NumericUpDown^ id_client_statistique;
+private: System::Windows::Forms::Button^ btn_calculermontantclient;
+
+
+
+private: System::Windows::Forms::TextBox^ montanttotal;
+
 
 
 
@@ -457,6 +465,10 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			this->prix_article = (gcnew System::Windows::Forms::TextBox());
 			this->nom_article = (gcnew System::Windows::Forms::TextBox());
 			this->Statistiques = (gcnew System::Windows::Forms::TabPage());
+			this->groupBox4 = (gcnew System::Windows::Forms::GroupBox());
+			this->id_client_statistique = (gcnew System::Windows::Forms::NumericUpDown());
+			this->btn_calculermontantclient = (gcnew System::Windows::Forms::Button());
+			this->montanttotal = (gcnew System::Windows::Forms::TextBox());
 			this->calcul_stat = (gcnew System::Windows::Forms::Button());
 			this->demarque_stat = (gcnew System::Windows::Forms::ComboBox());
 			this->remise_stat = (gcnew System::Windows::Forms::ComboBox());
@@ -517,6 +529,8 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->id_article))->BeginInit();
 			this->option_stock->SuspendLayout();
 			this->Statistiques->SuspendLayout();
+			this->groupBox4->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->id_client_statistique))->BeginInit();
 			this->groupBox3->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox1->SuspendLayout();
@@ -1699,6 +1713,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			// 
 			// Statistiques
 			// 
+			this->Statistiques->Controls->Add(this->groupBox4);
 			this->Statistiques->Controls->Add(this->calcul_stat);
 			this->Statistiques->Controls->Add(this->demarque_stat);
 			this->Statistiques->Controls->Add(this->remise_stat);
@@ -1729,6 +1744,44 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			this->Statistiques->TabIndex = 4;
 			this->Statistiques->Text = L"Statistiques";
 			this->Statistiques->UseVisualStyleBackColor = true;
+			// 
+			// groupBox4
+			// 
+			this->groupBox4->Controls->Add(this->id_client_statistique);
+			this->groupBox4->Controls->Add(this->btn_calculermontantclient);
+			this->groupBox4->Controls->Add(this->montanttotal);
+			this->groupBox4->Location = System::Drawing::Point(612, 440);
+			this->groupBox4->Name = L"groupBox4";
+			this->groupBox4->Size = System::Drawing::Size(561, 83);
+			this->groupBox4->TabIndex = 137;
+			this->groupBox4->TabStop = false;
+			this->groupBox4->Text = L"Montant total dépensé par un client";
+			// 
+			// id_client_statistique
+			// 
+			this->id_client_statistique->Location = System::Drawing::Point(9, 33);
+			this->id_client_statistique->Margin = System::Windows::Forms::Padding(2);
+			this->id_client_statistique->Name = L"id_client_statistique";
+			this->id_client_statistique->Size = System::Drawing::Size(169, 23);
+			this->id_client_statistique->TabIndex = 136;
+			// 
+			// btn_calculermontantclient
+			// 
+			this->btn_calculermontantclient->Location = System::Drawing::Point(449, 28);
+			this->btn_calculermontantclient->Name = L"btn_calculermontantclient";
+			this->btn_calculermontantclient->Size = System::Drawing::Size(93, 33);
+			this->btn_calculermontantclient->TabIndex = 113;
+			this->btn_calculermontantclient->Text = L"Calculer";
+			this->btn_calculermontantclient->UseVisualStyleBackColor = true;
+			this->btn_calculermontantclient->Click += gcnew System::EventHandler(this, &MainForm::btn_calculermontantclient_Click);
+			// 
+			// montanttotal
+			// 
+			this->montanttotal->Location = System::Drawing::Point(218, 33);
+			this->montanttotal->Name = L"montanttotal";
+			this->montanttotal->ReadOnly = true;
+			this->montanttotal->Size = System::Drawing::Size(201, 23);
+			this->montanttotal->TabIndex = 113;
 			// 
 			// calcul_stat
 			// 
@@ -2108,6 +2161,9 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			this->option_stock->PerformLayout();
 			this->Statistiques->ResumeLayout(false);
 			this->Statistiques->PerformLayout();
+			this->groupBox4->ResumeLayout(false);
+			this->groupBox4->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->id_client_statistique))->EndInit();
 			this->groupBox3->ResumeLayout(false);
 			this->groupBox3->PerformLayout();
 			this->groupBox2->ResumeLayout(false);
@@ -2307,12 +2363,21 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 	}
 	private: System::Void calculer_chiffre_affaire_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		//int id = this->oSvcStats->afficherChiffreAffMois(this->dateTimePicker2->Text);
-
 		this->dataGridView6->Refresh();
 		this->oDs = this->oSvcStats->afficherChiffreAffMois("Rsl", this->dateTimePicker2->Text);
 		this->dataGridView6->DataSource = this->oDs;
 		this->dataGridView6->DataMember = "Rsl";
+
+		this->chiffre_affaire->Text = dataGridView6->Rows[0]->Cells[0]->FormattedValue->ToString();
+	}
+	private: System::Void btn_calculermontantclient_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		this->dataGridView6->Refresh();
+		this->oDs = this->oSvcStats->afficherMontantAchatClient("Rsl", this->id_client_statistique->Text);
+		this->dataGridView6->DataSource = this->oDs;
+		this->dataGridView6->DataMember = "Rsl";
+
+		this->montanttotal->Text = dataGridView6->Rows[0]->Cells[0]->FormattedValue->ToString();
 	}
 };
 }

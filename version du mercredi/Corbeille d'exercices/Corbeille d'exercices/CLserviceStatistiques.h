@@ -22,5 +22,6 @@ namespace NS_Comp_Svc {
 		System::Data::DataSet^ afficherArticleMoinsVendu(System::String^ dataTableName);
 		System::Data::DataSet^ afficherArticlePlusVendu(System::String^ dataTableName);
 		System::Data::DataSet^ afficherChiffreAffMois(System::String^, System::String^);
+		System::Data::DataSet^ afficherMontantAchatClient(System::String^, System::String^);
 	};
 }
