@@ -49,5 +49,3 @@ System::String^ NS_Comp_Mappage::CLmapStatistiques::SelectClientMontantAchat() {
         "FULL OUTER JOIN Commande ON Commande.id_paiement = paiement.id_paiement "
         "WHERE Commande.id_client = " + this->id_client + ";";
 }
-
-

@@ -1,3 +1,8 @@
-﻿  MyForm.cpp
+﻿  CLCAD.cpp
+C:\Users\ryder\Documents\GitHub\ORDER-LINK\version du mercredi\Corbeille d'exercices\Corbeille d'exercices\CLCAD.cpp(46,28): warning C4101: 'ex' : variable locale non référencée
+C:\Users\ryder\Documents\GitHub\ORDER-LINK\version du mercredi\Corbeille d'exercices\Corbeille d'exercices\CLCAD.cpp(65,28): warning C4101: 'ex' : variable locale non référencée
+  MyForm.cpp
+C:\Users\ryder\Documents\GitHub\ORDER-LINK\version du mercredi\Corbeille d'exercices\Corbeille d'exercices\MyForm.h(2370,21): warning C4101: 'ex' : variable locale non référencée
+  Génération de code en cours...
   CLCAD.obj : module MSIL détecté ; liens incrémentiels désactivés pour MSIL ; édition de liens complète en cours
   Corbeille d'exercices.vcxproj -> C:\Users\ryder\Documents\GitHub\ORDER-LINK\version du mercredi\Corbeille d'exercices\x64\Debug\testWin.exe

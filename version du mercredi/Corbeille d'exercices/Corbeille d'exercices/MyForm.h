@@ -1750,7 +1750,7 @@ private: System::Windows::Forms::TextBox^ montanttotal;
 			this->groupBox4->Controls->Add(this->id_client_statistique);
 			this->groupBox4->Controls->Add(this->btn_calculermontantclient);
 			this->groupBox4->Controls->Add(this->montanttotal);
-			this->groupBox4->Location = System::Drawing::Point(612, 440);
+			this->groupBox4->Location = System::Drawing::Point(612, 438);
 			this->groupBox4->Name = L"groupBox4";
 			this->groupBox4->Size = System::Drawing::Size(561, 83);
 			this->groupBox4->TabIndex = 137;
@@ -2355,29 +2355,21 @@ private: System::Windows::Forms::TextBox^ montanttotal;
 		this->dataGridView6->DataMember = "Rsl";
 	}
 	private: System::Void btn_mostpopular_Click(System::Object^ sender, System::EventArgs^ e) {
-		
 		this->dataGridView6->Refresh();
 		this->oDs = this->oSvcStats->afficherArticlePlusVendu("Rsl");
 		this->dataGridView6->DataSource = this->oDs;
 		this->dataGridView6->DataMember = "Rsl";
 	}
 	private: System::Void calculer_chiffre_affaire_Click(System::Object^ sender, System::EventArgs^ e) {
-
-		this->dataGridView6->Refresh();
-		this->oDs = this->oSvcStats->afficherChiffreAffMois("Rsl", this->dateTimePicker2->Text);
-		this->dataGridView6->DataSource = this->oDs;
-		this->dataGridView6->DataMember = "Rsl";
-
-		this->chiffre_affaire->Text = dataGridView6->Rows[0]->Cells[0]->FormattedValue->ToString();
+		this->chiffre_affaire->Text = Convert::ToString(this->oSvcStats->afficherChiffreAffMois(this->dateTimePicker2->Text));
 	}
 	private: System::Void btn_calculermontantclient_Click(System::Object^ sender, System::EventArgs^ e) {
-
-		this->dataGridView6->Refresh();
-		this->oDs = this->oSvcStats->afficherMontantAchatClient("Rsl", this->id_client_statistique->Text);
-		this->dataGridView6->DataSource = this->oDs;
-		this->dataGridView6->DataMember = "Rsl";
-
-		this->montanttotal->Text = dataGridView6->Rows[0]->Cells[0]->FormattedValue->ToString();
+		try {
+			this->montanttotal->Text = Convert::ToString(this->oSvcStats->afficherMontantAchatClient(this->id_client_statistique->Text));
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("ID Incorrect");
+		}
 	}
 };
 }
