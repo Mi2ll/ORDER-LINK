@@ -40,6 +40,25 @@ namespace interfaceprojetpoo {
 			}
 		}
 
+    void LoadComboBoxData()
+		{
+			try
+			{
+				System::String^ query = "SELECT [nom_article] FROM Article";
+				System::Data::DataSet^ dataSet = myDatabase->getRows(query, "Article");
+
+				// Liaison de la ComboBox avec les données du DataSet
+				this->article->DisplayMember = "nom_article";
+				this->article->ValueMember = "nom_article";
+				this->article->DataSource = dataSet->Tables["Article"];
+				this->article->SelectedIndex = -1;
+			}
+			catch (Exception^ ex)
+			{
+				MessageBox::Show("Erreur lors du chargement des données : " + ex->Message);
+			}
+		}
+
 	private: int id_cli = 0;
 	private: System::Windows::Forms::Panel^ panel1;
 	private: System::Windows::Forms::Panel^ panel3;
@@ -55,7 +74,7 @@ namespace interfaceprojetpoo {
 
 
 
-
+    private: NS_Comp_Data::CLcad^ myDatabase;
 	private: NS_Comp_Svc::CLservicesClient^ oSvcClient;
 	private: NS_Comp_Svc::CLservicesPersonnel^ oSvc;
 	private: NS_Comp_Svc::CLservicestock^ oSvcS;
@@ -2106,6 +2125,8 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 		this->oSvcClient = gcnew NS_Comp_Svc::CLservicesClient();
 		this->oSvcS = gcnew NS_Comp_Svc::CLservicestock();
 		this->oSvcStats = gcnew NS_Comp_Svc::CLserviceStatistique();
+		this->myDatabase = gcnew NS_Comp_Data::CLcad();
+		this->LoadComboBoxData();
 	}
 	private: System::Void buttonClose_Click(System::Object^ sender, System::EventArgs^ e)
 	{
@@ -2218,6 +2239,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			int idarticle;
 			idarticle = this->oSvcS->ajouterUnArticle(this->nom_article->Text, Convert::ToInt32(this->qte_article->Text), Convert::ToInt32(this->seuilreapro->Text), this->prix_article->Text, this->tva->Text, this->nature_article->Text, this->couleur_article->Text);
 			this->id_article->Text = Convert::ToString(idarticle);
+			this->LoadComboBoxData();
 		}
 		if (this->modifier_stock->Checked) {
 			this->oSvcS->modifierUnArticle(Int32::Parse(this->id_article->Text), this->nom_article->Text, Int32::Parse(this->qte_article->Text), Int32::Parse(this->seuilreapro->Text), this->prix_article->Text, this->tva->Text, this->nature_article->Text, this->couleur_article->Text);
