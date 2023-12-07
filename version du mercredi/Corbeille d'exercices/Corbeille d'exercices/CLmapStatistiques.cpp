@@ -36,8 +36,7 @@ System::String^ NS_Comp_Mappage::CLmapStatistiques::SelectSousSeuilReap(void) {
 System::String^ NS_Comp_Mappage::CLmapStatistiques::SelectChiffreAffaire() {
     return "SELECT SUM(paiement.montant_paye) AS Chiffre_affaire "
            "FROM paiement "
-           "FULL OUTER JOIN Commande ON Commande.id_commande = paiment.id_paiement "
-           "FULL OUTER JOIN ligne_commande ON ligne_commande.id_ligne_commande = Commande.id_commande "
+           "FULL OUTER JOIN Commande ON Commande.id_paiement = paiement.id_paiement "
            "WHERE YEAR(Commande.date_cmd) = YEAR('" + this->date_chiffre_affaire + "') "
            "AND MONTH(Commande.date_cmd) = MONTH('" + this->date_chiffre_affaire + "')";
 }

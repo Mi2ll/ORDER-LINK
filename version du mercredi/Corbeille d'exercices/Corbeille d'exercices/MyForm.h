@@ -2006,7 +2006,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			// 
 			// dateTimePicker2
 			// 
-			this->dateTimePicker2->CustomFormat = L"yyyy-MM";
+			this->dateTimePicker2->CustomFormat = L"yyyy-MM-dd";
 			this->dateTimePicker2->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
 			this->dateTimePicker2->Location = System::Drawing::Point(22, 35);
 			this->dateTimePicker2->Margin = System::Windows::Forms::Padding(2);
