@@ -32,7 +32,6 @@ void NS_Comp_Data::CLcad::actionRows(System::String^ sSql)
 	this->oCnx->Open();
 	this->oCmd->ExecuteNonQuery();
 	this->oCnx->Close();
-
 }
 int NS_Comp_Data::CLcad::actionRowsID(System::String^ sSql)
 {

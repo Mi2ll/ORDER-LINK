@@ -28,10 +28,9 @@ System::Data::DataSet^ NS_Comp_Svc::CLserviceStatistique::afficherArticlePlusVen
 
 System::Data::DataSet^ NS_Comp_Svc::CLserviceStatistique::afficherChiffreAffMois(System::String^ dataTableName, System::String^ date_chiffre_affaire) {
 	this->oMappStatistiques->setDateChiffreAffaire(date_chiffre_affaire);
-
 	System::String^ sql;
 	sql = this->oMappStatistiques->SelectChiffreAffaire();
-	//Faire en sorte de récupérer une valeur unique
+	//return this->oCad->actionRowsID(sql);
 	return this->oCad->getRows(sql, dataTableName);
 }
 

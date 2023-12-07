@@ -1964,7 +1964,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			// 
 			// btn_mostpopular
 			// 
-			this->btn_mostpopular->Location = System::Drawing::Point(982, 462);
+			this->btn_mostpopular->Location = System::Drawing::Point(982, 358);
 			this->btn_mostpopular->Name = L"btn_mostpopular";
 			this->btn_mostpopular->Size = System::Drawing::Size(155, 59);
 			this->btn_mostpopular->TabIndex = 116;
@@ -1974,7 +1974,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			// 
 			// btn_lesspopular
 			// 
-			this->btn_lesspopular->Location = System::Drawing::Point(821, 462);
+			this->btn_lesspopular->Location = System::Drawing::Point(821, 358);
 			this->btn_lesspopular->Name = L"btn_lesspopular";
 			this->btn_lesspopular->Size = System::Drawing::Size(155, 59);
 			this->btn_lesspopular->TabIndex = 115;
@@ -2024,7 +2024,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			// 
 			// btn_select_item_in_reap
 			// 
-			this->btn_select_item_in_reap->Location = System::Drawing::Point(659, 462);
+			this->btn_select_item_in_reap->Location = System::Drawing::Point(659, 358);
 			this->btn_select_item_in_reap->Name = L"btn_select_item_in_reap";
 			this->btn_select_item_in_reap->Size = System::Drawing::Size(155, 59);
 			this->btn_select_item_in_reap->TabIndex = 113;
@@ -2040,7 +2040,7 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 			this->dataGridView6->Name = L"dataGridView6";
 			this->dataGridView6->RowHeadersWidth = 62;
 			this->dataGridView6->RowTemplate->Height = 28;
-			this->dataGridView6->Size = System::Drawing::Size(561, 444);
+			this->dataGridView6->Size = System::Drawing::Size(561, 337);
 			this->dataGridView6->TabIndex = 112;
 			// 
 			// MainForm
@@ -2283,9 +2283,15 @@ private: System::Windows::Forms::DataGridView^ dataGridView6;
 		this->dataGridView6->DataSource = this->oDs;
 		this->dataGridView6->DataMember = "Rsl";
 	}
-private: System::Void calculer_chiffre_affaire_Click(System::Object^ sender, System::EventArgs^ e) {
-	//à compléter
-}
+	private: System::Void calculer_chiffre_affaire_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		//int id = this->oSvcStats->afficherChiffreAffMois(this->dateTimePicker2->Text);
+
+		this->dataGridView6->Refresh();
+		this->oDs = this->oSvcStats->afficherChiffreAffMois("Rsl", this->dateTimePicker2->Text);
+		this->dataGridView6->DataSource = this->oDs;
+		this->dataGridView6->DataMember = "Rsl";
+	}
 };
 }
 	
