@@ -1,3 +1,0 @@
-C:\Users\Nathan Roulland\source\repos\Corbeille d'exercices\Corbeille d'exercices\Debug\Corbeille d'exercices.vcxproj.AssemblyReference.cache
-C:\Users\Nathan Roulland\source\repos\Corbeille d'exercices\Corbeille d'exercices\Debug\Corbeilledexercices.MyForm.resources
-C:\Users\Nathan Roulland\source\repos\Corbeille d'exercices\Corbeille d'exercices\Debug\Corbeille d'exercices.vcxproj.GenerateResource.cache

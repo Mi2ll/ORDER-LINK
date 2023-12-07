@@ -1,3 +1,0 @@
-C:\Users\noaar\OneDrive\Bureau\Travaux\A2\Programme POO\ORDER-LINK-main\version du mardi\Corbeille d'exercices\Corbeille d'exercices\x64\Debug\Corbeille d'exercices.vcxproj.AssemblyReference.cache
-C:\Users\noaar\OneDrive\Bureau\Travaux\A2\Programme POO\ORDER-LINK-main\version du mardi\Corbeille d'exercices\Corbeille d'exercices\x64\Debug\Corbeilledexercices.MyForm.resources
-C:\Users\noaar\OneDrive\Bureau\Travaux\A2\Programme POO\ORDER-LINK-main\version du mardi\Corbeille d'exercices\Corbeille d'exercices\x64\Debug\Corbeille d'exercices.vcxproj.GenerateResource.cache
