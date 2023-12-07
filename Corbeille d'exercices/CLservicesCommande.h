@@ -28,5 +28,7 @@ namespace NS_Comp_Svc
         void ajouterLigneCommande(System::String^, int, int);
         void supprimerLigneCommande(System::String^, int);
         int hasReduction(int, System::String^);
+        System::String^ setNewReference(int);
+        System::String^ addIncrToReference(System::String^);
     };
 }

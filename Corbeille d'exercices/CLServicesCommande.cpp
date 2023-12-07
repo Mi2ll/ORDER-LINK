@@ -38,16 +38,64 @@ void NS_Comp_Svc::CLservicesCommande::supprimerUneCommande(int id) {
 	this->oCad->actionRows(sql);
 }
 
+System::String^ NS_Comp_Svc::CLservicesCommande::setNewReference(int Id_Client) {
+
+	NS_Comp_Data::CLcad^ cad = gcnew NS_Comp_Data::CLcad();
+	System::String^ sql = "SELECT LEFT(nom_client, 2) FROM [Client] WHERE Id_Client = " + Id_Client;
+	System::String^ nom = this->oCad->actionRowsString(sql);
+
+	sql = "SELECT LEFT(prenom_client, 2) FROM [Client] WHERE Id_Client = " + Id_Client;
+	System::String^ prenom = this->oCad->actionRowsString(sql);
+
+	sql = "SELECT LEFT([Commande].date_cmd, 4) FROM [Client]" +
+		" LEFT JOIN[Commande] ON[Client].Id_Client = [Commande].Id_Client" +
+		" WHERE[Client].Id_Client = " + Id_Client;
+	System::String^ date = this->oCad->actionRowsString(sql);
+
+	sql = "SELECT LEFT([Adresse].ville, 3) FROM [Client]" +
+		" LEFT JOIN[Adresse] ON[Client].Id_Adresse_facture = [Adresse].Id_Adresse" +
+		" WHERE[Client].Id_Client = " + Id_Client;
+	System::String^ ville = this->oCad->actionRowsString(sql);
+
+	System::String^ reference = nom + prenom + date + ville;
+
+	return reference;
+}
+
+System::String^ NS_Comp_Svc::CLservicesCommande::addIncrToReference(System::String^ reference) {
+	NS_Comp_Data::CLcad^ cad = gcnew NS_Comp_Data::CLcad();
+	System::String^ finalReference;
+
+	System::String^ sqlNbLigne = "SELECT COUNT(*) AS NombreDeLignes FROM[Commande] WHERE reference LIKE '" + reference + "%';";
+	System::String^ StrNbLigne = this->oCad->actionRowsString(sqlNbLigne);
+
+	int longueur = StrNbLigne->Length;
+	int NbLigne = System::Convert::ToInt32(StrNbLigne);
+	int Increment = NbLigne + 1;
+	Increment = System::Convert::ToInt32(Increment);
+
+	if (longueur == 1) {
+		finalReference = "0" + Increment;
+		finalReference = reference + finalReference;
+		return finalReference;
+	}
+	else {
+		finalReference = reference + Increment;
+		return finalReference;
+	}
+}
+
 int NS_Comp_Svc::CLservicesCommande::ajouterUneCommande(System::String^ date_cmd, System::String^ date_livraison, int id_client)
 {
 	int id;
 	int id_paiement;
 	System::String^ sql;
-	int caca = hasReduction(id_client, date_cmd);
+	System::String^ Reference = setNewReference(id_client);
+	System::String^ finalReference = addIncrToReference(Reference);
 
 	this->oMappCommande->setDateCommande(date_cmd);
 	this->oMappCommande->setDateLivraison(date_livraison);
-	this->oMappCommande->setReduction(caca);
+	this->oMappCommande->setReference(finalReference);
 
 	sql = this->oMappPaiement->Insert();
 	id_paiement = this->oCad->actionRowsID(sql);

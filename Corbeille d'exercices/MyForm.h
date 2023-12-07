@@ -1610,13 +1610,21 @@ private: System::Windows::Forms::Button^ button1;
 			this->label27->Text = L"Couleur";
 			// 
 			// nature_article
-			// 
+			
+			this->nature_article->AutoCompleteMode = System::Windows::Forms::AutoCompleteMode::SuggestAppend;
+			this->nature_article->AutoCompleteSource = System::Windows::Forms::AutoCompleteSource::ListItems;
+
 			this->nature_article->FormattingEnabled = true;
 			this->nature_article->Location = System::Drawing::Point(16, 340);
 			this->nature_article->Margin = System::Windows::Forms::Padding(4);
 			this->nature_article->Name = L"nature_article";
 			this->nature_article->Size = System::Drawing::Size(388, 28);
 			this->nature_article->TabIndex = 60;
+			this->nature_article->Items->AddRange(gcnew cli::array< System::Object^  >(11) {
+				L"Smartphones et tablettes", L"Ordinateurs et ordinateurs portables",
+					L"Appareils audio et vidéo", L"Appareils photo et caméras", L"Accessoires électroniques ", L"Équipements de jeu ", L"Équipements de bureau ",
+					L"Composants électroniques", L"Équipements de réseau", L"Produits domotiques ", L"Équipements médicaux électroniques"
+			});
 			// 
 			// tva
 			// 
@@ -1626,6 +1634,7 @@ private: System::Windows::Forms::Button^ button1;
 			this->tva->Name = L"tva";
 			this->tva->Size = System::Drawing::Size(160, 28);
 			this->tva->TabIndex = 59;
+			this->tva->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"0.20", L"0.055", L"0.021" });
 			// 
 			// seuilreapro
 			// 
@@ -1928,6 +1937,7 @@ private: System::Windows::Forms::Button^ button1;
 			this->marge_stat->Name = L"marge_stat";
 			this->marge_stat->Size = System::Drawing::Size(152, 28);
 			this->marge_stat->TabIndex = 174;
+
 			// 
 			// tva_stat
 			// 
@@ -2402,7 +2412,6 @@ private: System::Windows::Forms::Button^ button1;
 			int id;
 			id = this->oSvcClient->ajouterUnClient(this->nom_client->Text, this->prenom_client->Text, this->date_naissance->Text, this->num_rue_client_livre->Text, this->nom_rue_client_livre->Text, this->codepostal_client_livre->Text, this->ville_client_livre->Text, this->num_rue_client_fact->Text, this->nom_rue_client_fact->Text, this->codepostal_client_fact->Text, this->ville_client_fact->Text);
 			this->id_client->Text = Convert::ToString(id);
-			this->LoadComboBoxData();
 		}
 		if (this->rb_modifier_client->Checked) {
 			this->oSvcClient->modifierUnClient(Int32::Parse(this->id_client->Text), this->nom_client->Text, this->prenom_client->Text, this->date_naissance->Text, this->num_rue_client_livre->Text, this->nom_rue_client_livre->Text, this->codepostal_client_livre->Text, this->ville_client_livre->Text, this->num_rue_client_fact->Text, this->nom_rue_client_fact->Text, this->codepostal_client_fact->Text, this->ville_client_fact->Text);
@@ -2457,6 +2466,8 @@ private: System::Windows::Forms::Button^ button1;
 			int idarticle;
 			idarticle = this->oSvcS->ajouterUnArticle(this->nom_article->Text, Convert::ToInt32(this->qte_article->Text), Convert::ToInt32(this->seuilreapro->Text), this->prix_article->Text, this->tva->Text, this->nature_article->Text, this->couleur_article->Text);
 			this->id_article->Text = Convert::ToString(idarticle);
+			this->LoadComboBoxData();
+
 		}
 		if (this->modifier_stock->Checked) {
 			this->oSvcS->modifierUnArticle(Int32::Parse(this->id_article->Text), this->nom_article->Text, Int32::Parse(this->qte_article->Text), Int32::Parse(this->seuilreapro->Text), this->prix_article->Text, this->tva->Text, this->nature_article->Text, this->couleur_article->Text);
