@@ -108,6 +108,18 @@ int NS_Comp_Svc::CLservicesCommande::ajouterUneCommande(System::String^ date_cmd
 void NS_Comp_Svc::CLservicesCommande::ajouterLigneCommande(System::String^ article, int id_commande, int qte_commandee) {
 	System::String^ sql;
 	int id_article;
+	int stock;
+
+	if (qte_commandee == 0) {
+		return;
+	}
+
+	sql = "SELECT qte_stock from Article WHERE nom_article = '" + article + "';";
+	stock = this->oCad->actionRowsID(sql);
+
+	if (stock < qte_commandee) {
+		throw;
+	}
 
 	sql = "SELECT id_article from Article WHERE nom_article = '" + article + "';";
 	id_article = this->oCad->actionRowsID(sql);
@@ -163,6 +175,25 @@ void NS_Comp_Svc::CLservicesCommande::modifierUneCommande(int id_commande, int i
 }
 
 void NS_Comp_Svc::CLservicesCommande::supprimerLigneCommande(System::String^ nom_article, int id_commande) {
-	System::String^ sql = this->oMappLigne->Delete(nom_article, id_commande);
+	System::String^ sql = "select qte_commandee from commande" +
+		" join ligne_commande on commande.id_commande = ligne_commande.id_commande" +
+		" join article on ligne_commande.Id_Article = article.Id_Article" +
+		" where ligne_commande.Id_Article = (SELECT article.id_article where nom_article = '" + nom_article + "'" +
+		" and commande.Id_Commande = " + id_commande + "); ";
+
+	int qte = this->oCad->actionRowsID(sql);
+
+	sql = "SELECT id_paiement from Commande where id_commande =" + id_commande + ";";
+	int id_paiement = System::Convert::ToInt32(this->oCad->actionRowsID(sql));
+	this->oMappPaiement->setIdPaiement(id_paiement);
+
+	sql = "SELECT qte_commandee * (prix_ht + prix_ht * tva) FROM article join ligne_commande on article.id_article = ligne_commande.id_article WHERE article.nom_article = '" + nom_article + "' and id_commande = " + id_commande + "; ";
+	System::String^ prix = System::Convert::ToString(0 - this->oCad->actionRowsID(sql));
+	this->oMappPaiement->setMontantPaye(prix);
+	sql = this->oMappPaiement->Update();
+	this->oCad->actionRows(sql);
+
+
+	sql = this->oMappLigne->Delete(nom_article, id_commande, qte);
 	this->oCad->actionRows(sql);
 }

@@ -8,15 +8,17 @@ System::String^ NS_Comp_Mappage::CLmapLigneCommande::Select(void)
 System::String^ NS_Comp_Mappage::CLmapLigneCommande::Insert(int Id_article, int id_commande)
 {
     return "INSERT INTO Ligne_commande (qte_commandee, Id_Article, Id_Commande)" +
-        "VALUES(" + this->qte_commandee + ", " + Id_article + ", " + id_commande + "); SELECT qte_commandee * (prix_ht + prix_ht * tva) FROM article join ligne_commande on article.id_article = ligne_commande.id_article WHERE article.id_article = " + Id_article + " and id_commande = " + id_commande + "; ";
+        "VALUES(" + this->qte_commandee + ", " + Id_article + ", " + id_commande + "); SELECT qte_commandee * (prix_ht + prix_ht * tva) FROM article join ligne_commande on article.id_article = ligne_commande.id_article WHERE article.id_article = " + Id_article + " and id_commande = " + id_commande + "; " +
+        "UPDATE Article set [qte_stock] = qte_stock - " + this->qte_commandee + "where ID_article = '" + Id_article + "'; ";
 }
-System::String^ NS_Comp_Mappage::CLmapLigneCommande::Delete(System::String^ nom_article, int id_commande)
+System::String^ NS_Comp_Mappage::CLmapLigneCommande::Delete(System::String^ nom_article, int id_commande, int qte)
 {
     return "DELETE from Ligne_commande where id_ligne_commande = (select Id_ligne_commande from commande" +
         " join ligne_commande on commande.id_commande = ligne_commande.id_commande" +
         " join article on ligne_commande.Id_Article = article.Id_Article" +
         " where ligne_commande.Id_Article = (SELECT article.id_article where nom_article = '" + nom_article + "')" +
-        " and commande.Id_Commande = " + id_commande + ");";
+        " and commande.Id_Commande = " + id_commande + ");" + 
+        "UPDATE Article set [qte_stock] = qte_stock + " + qte + "where nom_article = '" + nom_article + "'; ";
 }
 System::String^ NS_Comp_Mappage::CLmapLigneCommande::Update()
 {

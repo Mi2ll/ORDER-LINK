@@ -13,7 +13,7 @@ namespace NS_Comp_Mappage
     public:
         System::String^ Select(void);
         System::String^ Insert(int, int);
-        System::String^ Delete(System::String^, int);
+        System::String^ Delete(System::String^, int, int);
         System::String^ Update(void);
 
         void setIdLigneCommande(int);
