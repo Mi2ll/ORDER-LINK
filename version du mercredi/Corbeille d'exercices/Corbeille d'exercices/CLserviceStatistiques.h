@@ -16,12 +16,16 @@ namespace NS_Comp_Svc {
 		NS_Comp_Mappage::CLmapLigneCommande^ oMappLigneCommande;
 		NS_Comp_Mappage::CLmapPaiement^ oMappPaiement; 
 
+
 	public:
 		CLserviceStatistique();
+
+		int ValeurCommercialStock();
+	    int ValeurAchatStock();
+		int PanierMoyen();
 		System::Data::DataSet^ afficherArticleSousLeSeuil(System::String^ dataTableName);
 		System::Data::DataSet^ afficherArticleMoinsVendu(System::String^ dataTableName);
 		System::Data::DataSet^ afficherArticlePlusVendu(System::String^ dataTableName);
-		int afficherChiffreAffMois(System::String^);
-		int afficherMontantAchatClient(System::String^);
+		System::Data::DataSet^ afficherChiffreAffMois(System::String^, System::String^);
 	};
 }

@@ -26,16 +26,34 @@ System::Data::DataSet^ NS_Comp_Svc::CLserviceStatistique::afficherArticlePlusVen
 	return this->oCad->getRows(sql, dataTableName);
 }
 
-int NS_Comp_Svc::CLserviceStatistique::afficherChiffreAffMois(System::String^ date_chiffre_affaire) {
+System::Data::DataSet^ NS_Comp_Svc::CLserviceStatistique::afficherChiffreAffMois(System::String^ dataTableName, System::String^ date_chiffre_affaire) {
 	this->oMappStatistiques->setDateChiffreAffaire(date_chiffre_affaire);
 	System::String^ sql;
 	sql = this->oMappStatistiques->SelectChiffreAffaire();
-	return this->oCad->actionRowsID(sql);
+	//return this->oCad->actionRowsID(sql);
+	return this->oCad->getRows(sql, dataTableName);
 }
 
-int NS_Comp_Svc::CLserviceStatistique::afficherMontantAchatClient(System::String^ id_client) {
-	this->oMappStatistiques->setIdClient(System::Convert::ToInt32(id_client));
+int NS_Comp_Svc::CLserviceStatistique::ValeurAchatStock() {
 	System::String^ sql;
-	sql = this->oMappStatistiques->SelectClientMontantAchat();
-	return this->oCad->actionRowsID(sql);
+	sql = " SELECT sum((prix_ht + prix_ht * tva)*qte_stock) FROM Article ";
+
+	int valeur = this->oCad->actionRowsID(sql);
+	return valeur;
+}
+
+int NS_Comp_Svc::CLserviceStatistique::ValeurCommercialStock() {
+	System::String^ sql;
+	sql = "SELECT sum(qte_stock*(prix_ht)) FROM Article;";
+	
+	int valeur = this->oCad->actionRowsID(sql);
+	return valeur;
+}
+
+int NS_Comp_Svc::CLserviceStatistique::PanierMoyen() {
+	System::String^ sql;
+	sql = "SELECT Avg(montant_paye) FROM paiement";
+
+	int valeur = this->oCad->actionRowsID(sql);
+	return valeur;
 }
