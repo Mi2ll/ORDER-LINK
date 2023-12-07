@@ -38,6 +38,28 @@ namespace interfaceprojetpoo {
 				delete components;
 			}
 		}
+
+
+		void LoadComboBoxData()
+		{
+			try
+			{
+				System::String^ query = "SELECT [nom_article] FROM Article";
+				System::Data::DataSet^ dataSet = myDatabase->getRows(query, "Article");
+
+				// Liaison de la ComboBox avec les données du DataSet
+				this->article->DisplayMember = "nom_article";
+				this->article->ValueMember = "nom_article";
+				this->article->DataSource = dataSet->Tables["Article"];
+				this->article->SelectedIndex = -1;
+			}
+			catch (Exception^ ex)
+			{
+				MessageBox::Show("Erreur lors du chargement des données : " + ex->Message);
+			}
+		}
+
+
 	private: System::Windows::Forms::Panel^ panel1;
 	private: System::Windows::Forms::Panel^ panel3;
 
@@ -52,7 +74,7 @@ namespace interfaceprojetpoo {
 
 
 
-
+    private: NS_Comp_Data::Clcad^ myDatabase;
 	private: NS_Comp_Svc::CLservicesClient^ oSvcClient;
 	private: NS_Comp_Svc::CLservicesPersonnel^ oSvc;
 	private: NS_Comp_Svc::CLservicestock^ oSvcS;
@@ -1639,6 +1661,8 @@ private: System::Windows::Forms::DateTimePicker^ date_naissance;
 		this->oSvc = gcnew NS_Comp_Svc::CLservicesPersonnel();
 		this->oSvcClient = gcnew NS_Comp_Svc::CLservicesClient();
 		this->oSvcS = gcnew NS_Comp_Svc::CLservicestock();
+		this->myDatabase = gcnew NS_Comp_Data::CLcad();
+		this->LoadComboBoxData();
 	}
 	private: System::Void buttonClose_Click(System::Object^ sender, System::EventArgs^ e)
 	{
@@ -1703,6 +1727,7 @@ private: System::Windows::Forms::DateTimePicker^ date_naissance;
 			int id;
 			id = this->oSvcClient->ajouterUnClient(this->nom_client->Text, this->prenom_client->Text, this->date_naissance->Text, this->num_rue_client_livre->Text, this->nom_rue_client_livre->Text, this->codepostal_client_livre->Text, this->ville_client_livre->Text, this->num_rue_client_fact->Text, this->nom_rue_client_fact->Text, this->codepostal_client_fact->Text, this->ville_client_fact->Text);
 			this->id_client->Text = Convert::ToString(id);
+			this->LoadComboBox();
 		}
 		if (this->rb_modifier_client->Checked) {
 			this->oSvcClient->modifierUnClient(Int32::Parse(this->id_client->Text), this->nom_client->Text, this->prenom_client->Text, this->date_naissance->Text, this->num_rue_client_livre->Text, this->nom_rue_client_livre->Text, this->codepostal_client_livre->Text, this->ville_client_livre->Text, this->num_rue_client_fact->Text, this->nom_rue_client_fact->Text, this->codepostal_client_fact->Text, this->ville_client_fact->Text);
