@@ -34,11 +34,13 @@ void NS_Comp_Svc::CLservicesCommande::supprimerUneCommande(int id) {
 
 	this->oMappCommande->setIdCommande(id);
 
+	sql = "DELETE Ligne_commande WHERE id_commande = " + id + ";";
+	this->oCad->actionRows(sql);
+
 	sql = this->oMappCommande->Delete();
 	this->oCad->actionRows(sql);
 }
-
-System::String^ NS_Comp_Svc::CLservicesCommande::setNewReference(int Id_Client) {
+System::String^ NS_Comp_Svc::CLservicesCommande::setNewReference(int Id_Client, System::String^ date_cmd) {
 
 	NS_Comp_Data::CLcad^ cad = gcnew NS_Comp_Data::CLcad();
 	System::String^ sql = "SELECT LEFT(nom_client, 2) FROM [Client] WHERE Id_Client = " + Id_Client;
@@ -47,10 +49,7 @@ System::String^ NS_Comp_Svc::CLservicesCommande::setNewReference(int Id_Client) 
 	sql = "SELECT LEFT(prenom_client, 2) FROM [Client] WHERE Id_Client = " + Id_Client;
 	System::String^ prenom = this->oCad->actionRowsString(sql);
 
-	sql = "SELECT LEFT([Commande].date_cmd, 4) FROM [Client]" +
-		" LEFT JOIN[Commande] ON[Client].Id_Client = [Commande].Id_Client" +
-		" WHERE[Client].Id_Client = " + Id_Client;
-	System::String^ date = this->oCad->actionRowsString(sql);
+	System::String^ date = date_cmd->Substring(0, 4);
 
 	sql = "SELECT LEFT([Adresse].ville, 3) FROM [Client]" +
 		" LEFT JOIN[Adresse] ON[Client].Id_Adresse_facture = [Adresse].Id_Adresse" +
@@ -90,12 +89,14 @@ int NS_Comp_Svc::CLservicesCommande::ajouterUneCommande(System::String^ date_cmd
 	int id;
 	int id_paiement;
 	System::String^ sql;
-	System::String^ Reference = setNewReference(id_client);
+	System::String^ Reference = setNewReference(id_client, date_cmd);
 	System::String^ finalReference = addIncrToReference(Reference);
+	int reduc = hasReduction(id_client, date_cmd);
 
 	this->oMappCommande->setDateCommande(date_cmd);
 	this->oMappCommande->setDateLivraison(date_livraison);
 	this->oMappCommande->setReference(finalReference);
+	this->oMappCommande->setReduction(reduc);
 
 	sql = this->oMappPaiement->Insert();
 	id_paiement = this->oCad->actionRowsID(sql);
@@ -133,7 +134,36 @@ void NS_Comp_Svc::CLservicesCommande::ajouterLigneCommande(System::String^ artic
 	int id_paiement = System::Convert::ToInt32(this->oCad->actionRowsID(sql));
 	this->oMappPaiement->setIdPaiement(id_paiement);
 
-	this->oMappPaiement->setMontantPaye(prix);
+	// application de la réduction (15% / 10% / 5%)
+
+	// Récupérer l'id du client qui a fait la commande
+	System::String^ sqlgetIDclient = "SELECT Id_Client FROM Commande WHERE Id_Commande = " + id_commande + ";";
+	int idclient = System::Convert::ToInt32(this->oCad->actionRowsID(sqlgetIDclient));
+
+	// Nombre de commandes qu'a effectué le client
+	System::String^ sqlgetNmbCommandes = "SELECT COUNT(*) AS Nmb_commandes_client FROM[Client]"
+		+ " JOIN[Commande] ON[Client].Id_Client = [Commande].Id_Client"
+		+ " WHERE[Client].Id_Client = " + idclient + ";";
+	int nmbCommandesClient = System::Convert::ToInt32(this->oCad->actionRowsID(sqlgetNmbCommandes));
+
+	// Check si la commande a été réalisé le jour de naissance du client
+	sql = "SELECT Reduction FROM [Commande] WHERE Id_Commande =" + id_commande + ";";
+	int checkReduction = System::Convert::ToInt32(this->oCad->actionRowsID(sql));
+	int p = System::Convert::ToInt32(prix);
+
+	if (checkReduction == 1 && nmbCommandesClient == 1) {
+		p = p * 0.85;
+		System::String^ prixFinal = System::Convert::ToString(p);
+		this->oMappPaiement->setMontantPaye(prixFinal);
+	}
+	else if (checkReduction == 1) {
+		p = p * 0.9;
+		System::String^ prixFinal = System::Convert::ToString(p);
+		this->oMappPaiement->setMontantPaye(prixFinal);
+	}
+	else {
+		this->oMappPaiement->setMontantPaye(prix);
+	}
 	sql = this->oMappPaiement->Update();
 	this->oCad->actionRows(sql);
 }

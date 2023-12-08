@@ -2,7 +2,7 @@
 
 System::String^ NS_Comp_Mappage::CLmapCommande::Select(void)
 {
-    return "SELECT commande.id_commande, commande.reference, commande.date_cmd, commande.date_livraison, nom_client, prenom_client from Commande" +
+    return "SELECT commande.id_commande, commande.reference, commande.date_cmd, commande.date_livraison, nom_client, prenom_client, reduction from Commande" +
         " join Client on Commande.id_client = Client.id_client" +
         " ORDER BY commande.id_commande";
 }
