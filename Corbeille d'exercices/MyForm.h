@@ -2545,7 +2545,7 @@ private: System::Windows::Forms::Button^ button1;
 
 	private: System::Void btn_calculermontantclient_Click(System::Object^ sender, System::EventArgs^ e) {
 		try {
-			this->montanttotal->Text = Convert::ToString(this->oSvcStats->afficherMontantAchatClient(this->id_client_statistique->Text));
+			this->montanttotal->Text = Convert::ToString(this->oSvcStats->afficherMontantAchatClient(this->id_client_statistique->Text)) + "€";
 		}
 		catch (Exception^ ex) {
 			MessageBox::Show("ID Incorrect");
@@ -2572,13 +2572,13 @@ private: System::Void btn_mostpopular_Click(System::Object^ sender, System::Even
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	int valeur_achat = this->oSvcStats->ValeurAchatStock();
-	this->valeur_achat__stat->Text = Convert::ToString(valeur_achat);
+	this->valeur_achat__stat->Text = Convert::ToString(valeur_achat) + "€";
 
 	int valeur_commercial = this->oSvcStats->ValeurCommercialStock();
-	this->valeur_co__stat->Text = Convert::ToString(valeur_commercial);
+	this->valeur_co__stat->Text = Convert::ToString(valeur_commercial) + "€";
 
 	int paniermoyen = this->oSvcStats->PanierMoyen();
-	this->panier_moyen_stat->Text = Convert::ToString(paniermoyen);
+	this->panier_moyen_stat->Text = Convert::ToString(paniermoyen) + "€";
 }
 private: System::Void btn_supprimer_commande_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->oSvcCommande->supprimerUneCommande(Convert::ToInt32(this->id_commande->Text));

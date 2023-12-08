@@ -20,7 +20,11 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
+<<<<<<< HEAD
     <ProjectGuid>{45598F26-4EF6-4ECB-BA87-7CE53FA77A56}</ProjectGuid>
+=======
+    <ProjectGuid>{AA57B1F0-AB89-46BD-AF0B-CF02D9C5358F}</ProjectGuid>
+>>>>>>> d7195da56a6b596a114977aec54b3322cff04336
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>UnitTest1</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
@@ -167,11 +171,14 @@
   <ItemGroup>
     <ClInclude Include="pch.h" />
   </ItemGroup>
+<<<<<<< HEAD
   <ItemGroup>
     <ProjectReference Include="..\Corbeille d'exercices\Corbeille d'exercices.vcxproj">
       <Project>{b420f352-95c7-42af-a7d7-69ad9890165f}</Project>
     </ProjectReference>
   </ItemGroup>
+=======
+>>>>>>> d7195da56a6b596a114977aec54b3322cff04336
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
