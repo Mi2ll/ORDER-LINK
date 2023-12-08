@@ -3,7 +3,7 @@
 
 NS_Comp_Data::CLcad::CLcad(void)
 {
-	this->sCnx = "Data Source=LAPTOP-4FAP8S0J\\MSSQL_NATHAN;Initial Catalog= Projet;Integrated Security=True";
+	this->sCnx = "Data Source=LNGROPU;Initial Catalog= Projet_POO;Integrated Security=True";
 
 	this->sSql = "Rien";
 
@@ -20,8 +20,15 @@ System::String^ NS_Comp_Data::CLcad::actionRowsString(System::String^ sSql)
 	this->sSql = sSql;
 	this->oCmd->CommandText = this->sSql;
 	this->oDA->SelectCommand = this->oCmd;
-	this->oCnx->Open();
-	retour += this->oCmd->ExecuteScalar();
+	try {
+		this->oCnx->Open();
+		retour += this->oCmd->ExecuteScalar();
+	}
+	catch (System::Exception^ ex) {
+		this->oCnx->Close();
+		throw;
+	}
+	
 	this->oCnx->Close();
 	return retour;
 }
@@ -40,8 +47,14 @@ void NS_Comp_Data::CLcad::actionRows(System::String^ sSql)
 	this->sSql = sSql;
 	this->oCmd->CommandText = this->sSql;
 	this->oDA->SelectCommand = this->oCmd;
-	this->oCnx->Open();
-	this->oCmd->ExecuteNonQuery();
+	try {
+		this->oCnx->Open();
+		this->oCmd->ExecuteNonQuery();
+	}
+	catch (System::Exception^ ex) {
+		this->oCnx->Close();
+		throw;
+	}
 	this->oCnx->Close();
 
 }
@@ -51,8 +64,14 @@ int NS_Comp_Data::CLcad::actionRowsID(System::String^ sSql)
 	this->sSql = sSql;
 	this->oCmd->CommandText = this->sSql;
 	this->oDA->SelectCommand = this->oCmd;
-	this->oCnx->Open();
-	id = System::Convert::ToInt32(this->oCmd->ExecuteScalar());
+	try {
+		this->oCnx->Open();
+		id = System::Convert::ToInt32(this->oCmd->ExecuteScalar());
+	}
+	catch (System::Exception^ ex) {
+		this->oCnx->Close();
+		throw;
+	}
 	this->oCnx->Close();
 	return id;
 }
