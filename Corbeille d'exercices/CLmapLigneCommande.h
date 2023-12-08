@@ -14,7 +14,7 @@ namespace NS_Comp_Mappage
         System::String^ Select(void);
         System::String^ Insert(int, int);
         System::String^ Delete(System::String^, int, int);
-        System::String^ Update(void);
+        System::String^ Update(int, int);
 
         void setIdLigneCommande(int);
         void setQteCommandee(int);

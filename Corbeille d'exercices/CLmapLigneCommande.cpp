@@ -20,10 +20,10 @@ System::String^ NS_Comp_Mappage::CLmapLigneCommande::Delete(System::String^ nom_
         " and commande.Id_Commande = " + id_commande + ");" + 
         "UPDATE Article set [qte_stock] = qte_stock + " + qte + "where nom_article = '" + nom_article + "'; ";
 }
-System::String^ NS_Comp_Mappage::CLmapLigneCommande::Update()
+System::String^ NS_Comp_Mappage::CLmapLigneCommande::Update(int id_article, int id_commande)
 {
-    return "UPDATE Ligne_commande set [Id_Ligne_commande] = '" + this->id_ligne_commande + "', [qte_commandee] = '"
-        + this->qte_commandee + ";";
+    return "UPDATE Ligne_commande set [qte_commandee] = qte_commandee + " + this->qte_commandee + " WHERE id_ligne_commande = " + this->id_ligne_commande + ";  SELECT " + this->qte_commandee + " * (prix_ht + prix_ht * tva) FROM article join ligne_commande on article.id_article = ligne_commande.id_article WHERE article.id_article = " + id_article + " and id_commande = " + id_commande + "; " +
+        "UPDATE Article set[qte_stock] = qte_stock - " + this->qte_commandee + "where ID_article = '" + id_article + "'; ";
 }
 void NS_Comp_Mappage::CLmapLigneCommande::setIdLigneCommande(int Id)
 {

@@ -2523,7 +2523,7 @@ private: System::Windows::Forms::Button^ button1;
 			this->oSvcCommande->ajouterLigneCommande(this->article->Text, Int32::Parse(this->id_commande->Text), Int32::Parse(this->nb_article->Text));
 		}
 		catch (Exception^ ex) {
-			MessageBox::Show("Pas assez en stock");
+			MessageBox::Show("" + ex);
 		}
 	}
 	private: System::Void btn_modifier_commande_Click(System::Object^ sender, System::EventArgs^ e) {

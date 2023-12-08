@@ -110,6 +110,7 @@ void NS_Comp_Svc::CLservicesCommande::ajouterLigneCommande(System::String^ artic
 	System::String^ sql;
 	int id_article;
 	int stock;
+	System::String^ prix;
 
 	if (qte_commandee == 0) {
 		return;
@@ -124,11 +125,21 @@ void NS_Comp_Svc::CLservicesCommande::ajouterLigneCommande(System::String^ artic
 
 	sql = "SELECT id_article from Article WHERE nom_article = '" + article + "';";
 	id_article = this->oCad->actionRowsID(sql);
-
 	this->oMappLigne->setQteCommandee(qte_commandee);
 
-	sql = this->oMappLigne->Insert(id_article, id_commande);
-	System::String^ prix = System::Convert::ToString(this->oCad->actionRowsID(sql));
+	sql = "select Id_ligne_commande from ligne_commande where id_article = " +
+		" (SELECT id_article from article where nom_article = '" + article + "') and id_commande = " + id_commande + "; ";
+	int id_ligne = this->oCad->actionRowsID(sql);
+
+	if (id_ligne > 0) {
+		this->oMappLigne->setIdLigneCommande(id_ligne);
+		sql = this->oMappLigne->Update(id_article, id_commande);
+	}
+
+	else { sql = this->oMappLigne->Insert(id_article, id_commande); 
+	}
+	prix = System::Convert::ToString(this->oCad->actionRowsID(sql));
+
 
 	sql = "SELECT id_paiement from Commande where id_commande =" + id_commande + ";";
 	int id_paiement = System::Convert::ToInt32(this->oCad->actionRowsID(sql));
@@ -165,7 +176,7 @@ void NS_Comp_Svc::CLservicesCommande::ajouterLigneCommande(System::String^ artic
 		this->oMappPaiement->setMontantPaye(prix);
 	}
 	sql = this->oMappPaiement->Update();
-	this->oCad->actionRows(sql);
+	this->oCad->actionRows(sql);	
 }
 
 
