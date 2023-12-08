@@ -2540,14 +2540,15 @@ private: System::Windows::Forms::Button^ button1;
 		this->dataGridView2->DataMember = "Rsl";
 	}
 	private: System::Void calculer_chiffre_affaire_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->chiffre_affaire->Text = Convert::ToString(this->oSvcStats->afficherChiffreAffMois(this->dateTimePicker2->Text));
+	this->chiffre_affaire->Text = Convert::ToString(this->oSvcStats->afficherChiffreAffMois(this->dateTimePicker2->Text)) + "€";
 	}
 
 	private: System::Void btn_calculermontantclient_Click(System::Object^ sender, System::EventArgs^ e) {
 		try {
-			this->montanttotal->Text = Convert::ToString(this->oSvcStats->afficherMontantAchatClient(this->id_client_statistique->Text));
+			this->montanttotal->Text = Convert::ToString(this->oSvcStats->afficherMontantAchatClient(this->id_client_statistique->Text)) + "€";
 		}
 		catch (Exception^ ex) {
+			this->montanttotal->Text = "";
 			MessageBox::Show("ID Incorrect");
 		}
 	}
