@@ -44,6 +44,7 @@ namespace interfaceprojetpoo {
 		}
 	private: System::Windows::Forms::Button^ Simulation;
 	private: System::Windows::Forms::NumericUpDown^ new_demarque_stat;
+		   int id_perso = 0;
 	protected:
 
 	private: System::Windows::Forms::NumericUpDown^ new_remise_stat;
@@ -720,6 +721,7 @@ private: System::Windows::Forms::Button^ button1;
 			this->personnel_suivant->TabIndex = 70;
 			this->personnel_suivant->Text = L">";
 			this->personnel_suivant->UseVisualStyleBackColor = true;
+			this->personnel_suivant->Click += gcnew System::EventHandler(this, &MainForm::personnel_suivant_Click_1);
 			// 
 			// personnel_precedent
 			// 
@@ -731,6 +733,7 @@ private: System::Windows::Forms::Button^ button1;
 			this->personnel_precedent->TabIndex = 69;
 			this->personnel_precedent->Text = L"<";
 			this->personnel_precedent->UseVisualStyleBackColor = true;
+			this->personnel_precedent->Click += gcnew System::EventHandler(this, &MainForm::personnel_precedent_Click);
 			// 
 			// dgv_enr
 			// 
@@ -839,6 +842,7 @@ private: System::Windows::Forms::Button^ button1;
 			this->txtbx_code_postal->Name = L"txtbx_code_postal";
 			this->txtbx_code_postal->Size = System::Drawing::Size(392, 31);
 			this->txtbx_code_postal->TabIndex = 22;
+			this->txtbx_code_postal->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MainForm::TextBox_KeyPress);
 			// 
 			// id_personnel
 			// 
@@ -854,6 +858,7 @@ private: System::Windows::Forms::Button^ button1;
 			this->txtbx_numero_adresse->Name = L"txtbx_numero_adresse";
 			this->txtbx_numero_adresse->Size = System::Drawing::Size(203, 31);
 			this->txtbx_numero_adresse->TabIndex = 19;
+			this->txtbx_numero_adresse->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MainForm::TextBox_KeyPress);
 			// 
 			// txtbx_ville
 			// 
@@ -861,6 +866,7 @@ private: System::Windows::Forms::Button^ button1;
 			this->txtbx_ville->Name = L"txtbx_ville";
 			this->txtbx_ville->Size = System::Drawing::Size(392, 31);
 			this->txtbx_ville->TabIndex = 18;
+			this->txtbx_ville->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MainForm::TextBox_KeyPress);
 			// 
 			// id_superieur
 			// 
@@ -918,6 +924,7 @@ private: System::Windows::Forms::Button^ button1;
 			this->txtbx_nom_rue->Name = L"txtbx_nom_rue";
 			this->txtbx_nom_rue->Size = System::Drawing::Size(392, 31);
 			this->txtbx_nom_rue->TabIndex = 5;
+			this->txtbx_nom_rue->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MainForm::TextBox_KeyPress);
 			// 
 			// txtbx_prenom_personnel
 			// 
@@ -926,6 +933,7 @@ private: System::Windows::Forms::Button^ button1;
 			this->txtbx_prenom_personnel->Size = System::Drawing::Size(392, 31);
 			this->txtbx_prenom_personnel->TabIndex = 2;
 			this->txtbx_prenom_personnel->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MainForm::txtbx_nom_personnel_KeyPress);
+			this->txtbx_prenom_personnel->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MainForm::TextBox_KeyPress);
 			this->txtbx_prenom_personnel->Leave += gcnew System::EventHandler(this, &MainForm::txtbx_prenom_personnel_Leave);
 			// 
 			// txtbx_nom_personnel
@@ -934,6 +942,7 @@ private: System::Windows::Forms::Button^ button1;
 			this->txtbx_nom_personnel->Name = L"txtbx_nom_personnel";
 			this->txtbx_nom_personnel->Size = System::Drawing::Size(392, 31);
 			this->txtbx_nom_personnel->TabIndex = 1;
+			this->txtbx_nom_personnel->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MainForm::TextBox_KeyPress);
 			this->txtbx_nom_personnel->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MainForm::txtbx_nom_personnel_KeyPress);
 			this->txtbx_nom_personnel->Leave += gcnew System::EventHandler(this, &MainForm::txtbx_nom_personnel_Leave);
 			// 
@@ -1081,6 +1090,7 @@ private: System::Windows::Forms::Button^ button1;
 			this->codepostal_client_fact->Name = L"codepostal_client_fact";
 			this->codepostal_client_fact->Size = System::Drawing::Size(204, 31);
 			this->codepostal_client_fact->TabIndex = 59;
+			this->codepostal_client_fact->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MainForm::TextBox_KeyPress);
 			// 
 			// num_rue_client_fact
 			// 
@@ -1088,6 +1098,7 @@ private: System::Windows::Forms::Button^ button1;
 			this->num_rue_client_fact->Name = L"num_rue_client_fact";
 			this->num_rue_client_fact->Size = System::Drawing::Size(203, 31);
 			this->num_rue_client_fact->TabIndex = 58;
+			this->num_rue_client_fact->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MainForm::TextBox_KeyPress);
 			// 
 			// ville_client_fact
 			// 
@@ -1095,6 +1106,7 @@ private: System::Windows::Forms::Button^ button1;
 			this->ville_client_fact->Name = L"ville_client_fact";
 			this->ville_client_fact->Size = System::Drawing::Size(204, 31);
 			this->ville_client_fact->TabIndex = 57;
+			this->ville_client_fact->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MainForm::TextBox_KeyPress);
 			// 
 			// nom_rue_client_fact
 			// 
@@ -1102,6 +1114,7 @@ private: System::Windows::Forms::Button^ button1;
 			this->nom_rue_client_fact->Name = L"nom_rue_client_fact";
 			this->nom_rue_client_fact->Size = System::Drawing::Size(204, 31);
 			this->nom_rue_client_fact->TabIndex = 56;
+			this->nom_rue_client_fact->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MainForm::TextBox_KeyPress);
 			// 
 			// dgv_client
 			// 
@@ -1200,6 +1213,7 @@ private: System::Windows::Forms::Button^ button1;
 			this->codepostal_client_livre->Name = L"codepostal_client_livre";
 			this->codepostal_client_livre->Size = System::Drawing::Size(204, 31);
 			this->codepostal_client_livre->TabIndex = 45;
+			this->codepostal_client_livre->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MainForm::TextBox_KeyPress);
 			// 
 			// id_client
 			// 
@@ -1215,6 +1229,7 @@ private: System::Windows::Forms::Button^ button1;
 			this->num_rue_client_livre->Name = L"num_rue_client_livre";
 			this->num_rue_client_livre->Size = System::Drawing::Size(203, 31);
 			this->num_rue_client_livre->TabIndex = 43;
+			this->num_rue_client_livre->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MainForm::TextBox_KeyPress);
 			// 
 			// ville_client_livre
 			// 
@@ -1222,6 +1237,7 @@ private: System::Windows::Forms::Button^ button1;
 			this->ville_client_livre->Name = L"ville_client_livre";
 			this->ville_client_livre->Size = System::Drawing::Size(204, 31);
 			this->ville_client_livre->TabIndex = 42;
+			this->ville_client_livre->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MainForm::TextBox_KeyPress);
 			// 
 			// date_naissance
 			// 
@@ -1304,6 +1320,7 @@ private: System::Windows::Forms::Button^ button1;
 			this->nom_rue_client_livre->Name = L"nom_rue_client_livre";
 			this->nom_rue_client_livre->Size = System::Drawing::Size(204, 31);
 			this->nom_rue_client_livre->TabIndex = 36;
+			this->nom_rue_client_livre->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MainForm::TextBox_KeyPress);
 			// 
 			// prenom_client
 			// 
@@ -1311,6 +1328,8 @@ private: System::Windows::Forms::Button^ button1;
 			this->prenom_client->Name = L"prenom_client";
 			this->prenom_client->Size = System::Drawing::Size(420, 31);
 			this->prenom_client->TabIndex = 35;
+			this->prenom_client->Leave += gcnew System::EventHandler(this, &MainForm::txtbx_prenom_client_Leave);
+			this->prenom_client->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MainForm::TextBox_KeyPress);
 			// 
 			// nom_client
 			// 
@@ -1319,6 +1338,7 @@ private: System::Windows::Forms::Button^ button1;
 			this->nom_client->Size = System::Drawing::Size(420, 31);
 			this->nom_client->TabIndex = 34;
 			this->nom_client->Leave += gcnew System::EventHandler(this, &MainForm::nom_client_Leave);
+			this->nom_client->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MainForm::TextBox_KeyPress);
 			// 
 			// Commandes
 			// 
@@ -2375,10 +2395,27 @@ private: System::Windows::Forms::Button^ button1;
 		this->Close();
 	}
 	private: System::Void select_personnel_click(System::Object^ sender, System::EventArgs^ e) {
+		this->id_perso = 0;
 		this->dgv_enr->Refresh();
 		this->oDs = this->oSvc->rechercherUnPersonnel("Rsl", this->txtbx_nom_personnel->Text, this->txtbx_prenom_personnel->Text);
 		this->dgv_enr->DataSource = this->oDs;
 		this->dgv_enr->DataMember = "Rsl";
+		this->id_personnel->Text = dgv_enr->Rows[id_perso]->Cells[0]->FormattedValue->ToString();
+		this->txtbx_nom_personnel->Text = dgv_enr->Rows[id_perso]->Cells[1]->FormattedValue->ToString();
+		this->txtbx_prenom_personnel->Text = dgv_enr->Rows[id_perso]->Cells[2]->FormattedValue->ToString();
+		this->date_embauche->Text = dgv_enr->Rows[id_perso]->Cells[3]->FormattedValue->ToString();
+		this->id_superieur->Text = dgv_enr->Rows[id_perso]->Cells[4]->FormattedValue->ToString();
+		this->txtbx_numero_adresse->Text = dgv_enr->Rows[id_perso]->Cells[7]->FormattedValue->ToString();
+		this->txtbx_nom_rue->Text = dgv_enr->Rows[id_perso]->Cells[8]->FormattedValue->ToString();
+		this->txtbx_code_postal->Text = dgv_enr->Rows[id_perso]->Cells[9]->FormattedValue->ToString();
+		this->txtbx_ville->Text = dgv_enr->Rows[id_perso]->Cells[10]->FormattedValue->ToString();
+		this->personnel_suivant->Enabled = true;
+		if (dgv_enr->Rows[id_perso + 1]->Cells[0]->FormattedValue->ToString() == "") {
+			this->personnel_suivant->Enabled = false;
+		}
+		if (id_cli == 0) {
+			this->personnel_precedent->Enabled = false;
+		}
 	}
 	private: System::Void btn_confirmer_personnel_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (this->rb_nouveau_personnel->Checked) {
@@ -2397,35 +2434,36 @@ private: System::Windows::Forms::Button^ button1;
 		this->txtbx_nom_personnel->Text = this->txtbx_nom_personnel->Text->ToUpper();
 	}
 	private: System::Void txtbx_nom_personnel_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
-		// Nombre maximal de caractères autorisés dans le TextBox
-		int maxLength = 50; // Changez cette valeur selon vos besoins
+		int maxLength = 50; 
 
-		// Vérifier si le nombre actuel de caractères dépasse la limite
-		if (txtbx_nom_personnel->Text->Length >= maxLength && e->KeyChar != '\b') { // '\b' représente la touche de suppression
-			// Empêcher l'ajout de caractères supplémentaires si la limite est atteinte
+		
+		if (txtbx_nom_personnel->Text->Length >= maxLength && e->KeyChar != '\b') { 
 			e->Handled = true;
 		}
 	}
 	private: System::Void txtbx_prenom_personnel_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
-		// Nombre maximal de caractères autorisés dans le TextBox
-		int maxLength = 50; // Changez cette valeur selon vos besoins
+		int maxLength = 50;
 
-		// Vérifier si le nombre actuel de caractères dépasse la limite
-		if (txtbx_prenom_personnel->Text->Length >= maxLength && e->KeyChar != '\b') { // '\b' représente la touche de suppression
-			// Empêcher l'ajout de caractères supplémentaires si la limite est atteinte
+		if (txtbx_prenom_personnel->Text->Length >= maxLength && e->KeyChar != '\b') { 
 			e->Handled = true;
 		}
 	}
 	private: System::Void txtbx_prenom_personnel_Leave(System::Object^ sender, System::EventArgs^ e) {
 		if (txtbx_prenom_personnel->Text->Length > 0) {
-			// Récupérer le texte actuel de la TextBox
 			String^ text = txtbx_prenom_personnel->Text;
 
-			// Mettre la première lettre en majuscule
 			text = System::Globalization::CultureInfo::CurrentCulture->TextInfo->ToTitleCase(text->ToLower());
 
-			// Mettre à jour le texte de la TextBox avec la première lettre en majuscule
 			txtbx_prenom_personnel->Text = text;
+		}
+	}
+	private: System::Void txtbx_prenom_client_Leave(System::Object^ sender, System::EventArgs^ e) {
+		if (prenom_client->Text->Length > 0) {
+			String^ text = prenom_client->Text;
+
+			text = System::Globalization::CultureInfo::CurrentCulture->TextInfo->ToTitleCase(text->ToLower());
+
+			prenom_client->Text = text;
 		}
 	}
 	private: System::Void confirmer_client_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -2652,6 +2690,49 @@ private: System::Void Statistiques_Click(System::Object^ sender, System::EventAr
 		int paniermoyen = this->oSvcStats->PanierMoyen();
 		this->panier_moyen_stat->Text = Convert::ToString(paniermoyen) + "€";
 	}
-	
+	private: System::Void personnel_suivant_Click_1(System::Object^ sender, System::EventArgs^ e) {
+		this->id_perso ++;
+		this->id_personnel->Text = dgv_enr->Rows[id_perso]->Cells[0]->FormattedValue->ToString();
+		this->txtbx_nom_personnel->Text = dgv_enr->Rows[id_perso]->Cells[1]->FormattedValue->ToString();
+		this->txtbx_prenom_personnel->Text = dgv_enr->Rows[id_perso]->Cells[2]->FormattedValue->ToString();
+		this->date_embauche->Text = dgv_enr->Rows[id_perso]->Cells[3]->FormattedValue->ToString();
+		this->id_superieur->Text = dgv_enr->Rows[id_perso]->Cells[4]->FormattedValue->ToString();
+		this->txtbx_numero_adresse->Text = dgv_enr->Rows[id_perso]->Cells[7]->FormattedValue->ToString();
+		this->txtbx_nom_rue->Text = dgv_enr->Rows[id_perso]->Cells[8]->FormattedValue->ToString();
+		this->txtbx_code_postal->Text = dgv_enr->Rows[id_perso]->Cells[9]->FormattedValue->ToString();
+		this->txtbx_ville->Text = dgv_enr->Rows[id_perso]->Cells[10]->FormattedValue->ToString();
+		if (dgv_enr->Rows[id_perso + 1]->Cells[0]->FormattedValue->ToString() == "") {
+			this->personnel_suivant->Enabled = false;
+		}
+		this->personnel_precedent->Enabled = true;
+	}
+	private: System::Void personnel_precedent_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->id_perso--;
+		this->id_personnel->Text = dgv_enr->Rows[id_perso]->Cells[0]->FormattedValue->ToString();
+		this->txtbx_nom_personnel->Text = dgv_enr->Rows[id_perso]->Cells[1]->FormattedValue->ToString();
+		this->txtbx_prenom_personnel->Text = dgv_enr->Rows[id_perso]->Cells[2]->FormattedValue->ToString();
+		this->date_embauche->Text = dgv_enr->Rows[id_perso]->Cells[3]->FormattedValue->ToString();
+		this->id_superieur->Text = dgv_enr->Rows[id_perso]->Cells[4]->FormattedValue->ToString();
+		this->txtbx_numero_adresse->Text = dgv_enr->Rows[id_perso]->Cells[7]->FormattedValue->ToString();
+		this->txtbx_nom_rue->Text = dgv_enr->Rows[id_perso]->Cells[8]->FormattedValue->ToString();
+		this->txtbx_code_postal->Text = dgv_enr->Rows[id_perso]->Cells[9]->FormattedValue->ToString();
+		this->txtbx_ville->Text = dgv_enr->Rows[id_perso]->Cells[10]->FormattedValue->ToString();
+		if (id_perso == 0) {
+			this->personnel_precedent->Enabled = false;
+		}
+		this->personnel_suivant->Enabled = true;
+	}
+	private : System::Void TextBox_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
+		// Caractères à interdire (" ; , * ( )")
+		array<Char>^ charactersToBlock = { '"', ';', ',', '*', '(', ')', '\''};
+
+		// Vérifier si le caractère saisi est dans la liste des caractères à interdire
+		for (int i = 0; i < charactersToBlock->Length; i++) {
+			if (e->KeyChar == charactersToBlock[i]) {
+				e->Handled = true; // Empêche le caractère d'être saisi dans le TextBox
+				return;
+			}
+		}
+	}
 };
 }
