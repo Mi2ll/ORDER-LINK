@@ -1,4 +1,5 @@
 #include "CLserviceStats.h"
+#include "CLSimulation.h"
 
 
 NS_Comp_Svc::CLserviceStatistique::CLserviceStatistique(void) {
@@ -40,9 +41,23 @@ int NS_Comp_Svc::CLserviceStatistique::afficherMontantAchatClient(System::String
 	return this->oCad->actionRowsID(sql);
 }
 
-int NS_Comp_Svc::CLserviceStatistique::ValeurAchatStock() {
+int NS_Comp_Svc::CLserviceStatistique::ValeurAchatStock(System::String^ marge, System::String^ remise, System::String^ demarque) {
 	System::String^ sql;
-	sql = " SELECT sum((prix_ht + prix_ht * tva)*qte_stock) FROM Article ";
+	int marge_int = System::Convert::ToInt32(marge);
+	int remise_int = System::Convert::ToInt32(remise);
+	int demarque_int = System::Convert::ToInt32(demarque);
+
+	if (marge_int < 10) {
+		marge = "0" + marge;
+	}
+	if (remise_int < 10) {
+		remise = "0" + remise;
+	}
+	if (demarque_int < 10) {
+		demarque = "0" + demarque;
+	}
+
+	sql = " SELECT ((sum((prix_ht + prix_ht * tva)*qte_stock) * 1." + marge + ") * (1-0." + remise + ")) * (1-0." + demarque + ") FROM Article ";
 
 	int valeur = this->oCad->actionRowsID(sql);
 	return valeur;
@@ -61,5 +76,41 @@ int NS_Comp_Svc::CLserviceStatistique::PanierMoyen() {
 	sql = "SELECT Avg(montant_paye) FROM paiement";
 
 	int valeur = this->oCad->actionRowsID(sql);
+	return valeur;
+}
+
+float NS_Comp_Svc::CLserviceStatistique::Simulation(int valeur, System::String^ tva, System::String^ marge, System::String^ remise, System::String^ demarque) {
+	CLSimulation^ oSimu = gcnew CLSimulation();
+
+	if (System::Convert::ToInt32(tva) < 10) {
+		tva = "0" + tva;
+	}
+	if (System::Convert::ToInt32(marge) < 10) {
+		marge = "0" + marge;
+	}
+	if (System::Convert::ToInt32(remise) < 10) {
+		remise = "0" + remise;
+	}
+	if (System::Convert::ToInt32(demarque) < 10) {
+		demarque = "0" + demarque;
+	}
+
+	oSimu->setTva(tva);
+	oSimu->setMarge(marge);
+	oSimu->setRemise(remise);
+	oSimu->setDemarque(demarque);
+
+	CLSimulation::FonctionMembreDelegate^ ptrFonction = gcnew CLSimulation::FonctionMembreDelegate(oSimu, &CLSimulation::tvaCalcul);
+	valeur = ptrFonction(valeur);
+
+	ptrFonction = gcnew CLSimulation::FonctionMembreDelegate(oSimu, &CLSimulation::margeCalcul);
+	valeur = ptrFonction(valeur);
+
+	ptrFonction = gcnew CLSimulation::FonctionMembreDelegate(oSimu, &CLSimulation::remiseCalcul);
+	valeur = ptrFonction(valeur);
+	
+	ptrFonction = gcnew CLSimulation::FonctionMembreDelegate(oSimu, &CLSimulation::demarqueCalcul);
+	valeur = ptrFonction(valeur);
+
 	return valeur;
 }

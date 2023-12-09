@@ -138,6 +138,7 @@
     <ClCompile Include="CLServicesCommande.cpp" />
     <ClCompile Include="CLserviceStats.cpp" />
     <ClCompile Include="CLserviceStock.cpp" />
+    <ClCompile Include="CLSimulation.cpp" />
     <ClCompile Include="MyForm.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +156,7 @@
     <ClInclude Include="CLservicesCommande.h" />
     <ClInclude Include="CLserviceStats.h" />
     <ClInclude Include="CLserviceStock.h" />
+    <ClInclude Include="CLSimulation.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>

@@ -20,12 +20,13 @@ namespace NS_Comp_Svc {
 		CLserviceStatistique();
 
 		int ValeurCommercialStock();
-		int ValeurAchatStock();
+		int ValeurAchatStock(System::String^, System::String^, System::String^);
 		int PanierMoyen();
 		System::Data::DataSet^ afficherArticleSousLeSeuil(System::String^ dataTableName);
 		System::Data::DataSet^ afficherArticleMoinsVendu(System::String^ dataTableName);
 		System::Data::DataSet^ afficherArticlePlusVendu(System::String^ dataTableName);
 		int afficherChiffreAffMois(System::String^);
 		int afficherMontantAchatClient(System::String^);
+		float Simulation(int, System::String^, System::String^, System::String^, System::String^);
 	};
 }

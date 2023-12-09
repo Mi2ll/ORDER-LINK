@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 
 namespace NS_Comp_Mappage {
 	ref class CLmapStatistiques
@@ -12,6 +11,7 @@ namespace NS_Comp_Mappage {
 		System::String^ demarque_inconnue;
 		System::String^ date_chiffre_affaire;
 		int id_client;
+		
 
 	public:
 		System::String^ SelectSousSeuilReap(void);
@@ -26,6 +26,7 @@ namespace NS_Comp_Mappage {
 		void setDemarqueInconnue(System::String^);
 		void setDateChiffreAffaire(System::String^);
 		void setIdClient(int);
+		
 
 		System::String^ getTva(void);
 		System::String^ getMargeCommerciale(void);
@@ -33,5 +34,6 @@ namespace NS_Comp_Mappage {
 		System::String^ getDemarqueInconnue(void);
 		System::String^ getDateChiffreAffaire(void);
 		int getIdClient(void);
+		
 	};
 }
