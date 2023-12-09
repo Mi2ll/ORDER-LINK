@@ -22,7 +22,7 @@ namespace NS_Comp_Svc
         CLservicesCommande(void);
         System::Data::DataSet^ rechercherLesCommandes(System::String^, int);
         System::Data::DataSet^ rechercherUneCommande(System::String^, int);
-        int ajouterUneCommande(System::String^, System::String^, int);
+        int ajouterUneCommande(System::String^, System::String^, int, System::String^);
         void supprimerUneCommande(int);
         void modifierUneCommande(int, int, System::String^);
         void ajouterLigneCommande(System::String^, int, int);

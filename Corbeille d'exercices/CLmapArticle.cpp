@@ -8,8 +8,8 @@ System::String^ NS_Comp_Mappage::CLmapArticle::Insert() {
 	return "INSERT INTO Article (nom_article, qte_stock, seuil_reappro, prix_ht, tva, nature, couleur) VALUES ('" + this->NomArticle + "', " + this->qte_stock + ", " + this->seuil_reappro + ", " + this->prix_ht + ", " + this->tva + ", '" + this->nature + "', '" + this->couleur + "'); SELECT @@IDENTITY ;";
 }
 
-System::String^ NS_Comp_Mappage::CLmapArticle::Update(void) {
-	return "UPDATE Article SET nom_article = '" + this->NomArticle + "', qte_stock = '" + this->qte_stock + "', seuil_reappro = '" + this->seuil_reappro + "', prix_ht = '" + this->prix_ht + "', tva = '" + this->tva + "', nature = '" + this->nature + "', couleur = '" + this->couleur + "' WHERE id_article = " + this->Id_article;
+System::String^ NS_Comp_Mappage::CLmapArticle::Update(float prix, System::String^ date) {
+	return "UPDATE Article SET nom_article = '" + this->NomArticle + "', qte_stock = '" + this->qte_stock + "', seuil_reappro = '" + this->seuil_reappro + "', prix_ht = '" + this->prix_ht + "', tva = '" + this->tva + "', nature = '" + this->nature + "', couleur = '" + this->couleur + "' WHERE id_article = " + this->Id_article + "; INSERT INTO historique (id_article, date, prix_ht) VALUES (" + this->Id_article + ",'" + date + "', " + prix + ");";
 
 }
 

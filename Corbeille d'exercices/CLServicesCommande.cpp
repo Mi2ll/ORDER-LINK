@@ -84,7 +84,7 @@ System::String^ NS_Comp_Svc::CLservicesCommande::addIncrToReference(System::Stri
 	}
 }
 
-int NS_Comp_Svc::CLservicesCommande::ajouterUneCommande(System::String^ date_cmd, System::String^ date_livraison, int id_client)
+int NS_Comp_Svc::CLservicesCommande::ajouterUneCommande(System::String^ date_cmd, System::String^ date_livraison, int id_client, System::String^ modepaiement)
 {
 	int id;
 	int id_paiement;
@@ -98,7 +98,7 @@ int NS_Comp_Svc::CLservicesCommande::ajouterUneCommande(System::String^ date_cmd
 	this->oMappCommande->setReference(finalReference);
 	this->oMappCommande->setReduction(reduc);
 
-	sql = this->oMappPaiement->Insert();
+	sql = this->oMappPaiement->Insert(modepaiement);
 	id_paiement = this->oCad->actionRowsID(sql);
 
 	sql = this->oMappCommande->Insert(id_paiement, id_client);

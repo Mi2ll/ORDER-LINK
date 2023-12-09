@@ -1,5 +1,8 @@
 #include "CLservicestock.h"
 #include "CLmapArticle.h"
+#include <iostream>
+#using <System.dll>
+#using <System.Windows.Forms.dll>
 
 NS_Comp_Svc::CLservicestock::CLservicestock(void)
 {
@@ -97,12 +100,15 @@ void NS_Comp_Svc::CLservicestock::modifierUnArticle(int id, System::String^ nom,
 				sql = "SELECT Id_Article FROM Article WHERE Id_Article = " + id + ";";
 				IdArticle = this->oCad->actionRowsID(sql);
 
+				sql = "SELECT prix_ht FROM Article WHERE Id_Article = " + id + ";";
+				float prix_avant = this->oCad->actionRowsID(sql);
+
+				System::DateTime now = System::DateTime::Now;
+				System::String^ date = now.ToString("yyyy-MM-dd");
+
 				this->oMappArticle->setIdArticle(IdArticle);
 
-				sql = this->oMappArticle->Update();
-				this->oCad->actionRows(sql);
-
-				sql = this->oMappArticle->Update();
+				sql = this->oMappArticle->Update(prix_avant, date);
 				this->oCad->actionRows(sql);
 			}
 		}

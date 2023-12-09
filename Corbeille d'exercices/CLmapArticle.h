@@ -18,7 +18,7 @@ namespace NS_Comp_Mappage
         System::String^ Select(void);
         System::String^ Insert();
         System::String^ Delete(void);
-        System::String^ Update(void);
+        System::String^ Update(float, System::String^);
 
         void setIdArticle(int);
         void setNomArticle(System::String^);

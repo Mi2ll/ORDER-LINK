@@ -12,7 +12,7 @@ namespace NS_Comp_Mappage
         System::String^ montant_ht;
         System::String^ tva;
     public:
-        System::String^ Insert(void);
+        System::String^ Insert(System::String^);
         System::String^ Delete(void);
         System::String^ Update(void);
 

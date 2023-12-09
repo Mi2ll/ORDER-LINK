@@ -1,8 +1,8 @@
 #include "CLmapPaiement.h"
 
-System::String^ NS_Comp_Mappage::CLmapPaiement::Insert(void)
+System::String^ NS_Comp_Mappage::CLmapPaiement::Insert(System::String^ mode)
 {
-    return "INSERT INTO Paiement (date_paiement, montant_paye) VALUES('" + this->date_paiement + "', 0); SELECT @@IDENTITY;";
+    return "INSERT INTO Paiement (date_paiement, montant_paye, mode_paiement) VALUES('" + this->date_paiement + "', 0, '" + mode + "'); SELECT @@IDENTITY; ";
 }
 System::String^ NS_Comp_Mappage::CLmapPaiement::Delete(void)
 {
