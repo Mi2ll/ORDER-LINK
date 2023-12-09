@@ -2613,7 +2613,12 @@ private: System::Windows::Forms::Button^ button1;
 		this->dataGridView2->DataMember = "Rsl";
 	}
 	private: System::Void calculer_chiffre_affaire_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->chiffre_affaire->Text = Convert::ToString(this->oSvcStats->afficherChiffreAffMois(this->dateTimePicker2->Text)) + "€";
+		try {
+			this->chiffre_affaire->Text = Convert::ToString(this->oSvcStats->afficherChiffreAffMois(this->dateTimePicker2->Text)) + "€";
+		}
+		catch (Exception^ ex) {
+			this->chiffre_affaire->Text = "0€";
+		}
 	}
 
 	private: System::Void btn_calculermontantclient_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -2621,7 +2626,7 @@ private: System::Windows::Forms::Button^ button1;
 			this->montanttotal->Text = Convert::ToString(this->oSvcStats->afficherMontantAchatClient(this->id_client_statistique->Text)) + "€";
 		}
 		catch (Exception^ ex) {
-			MessageBox::Show("ID Incorrect");
+			this->montanttotal->Text = "0€";
 		}
 	}
 	private: System::Void btn_select_item_in_reap_Click(System::Object^ sender, System::EventArgs^ e) {

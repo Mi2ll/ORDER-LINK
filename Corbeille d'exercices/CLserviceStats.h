@@ -8,7 +8,7 @@
 
 namespace NS_Comp_Svc {
 
-	ref class CLserviceStatistique {
+	public ref class CLserviceStatistique {
 	private:
 		NS_Comp_Data::CLcad^ oCad;
 		NS_Comp_Mappage::CLmapStatistiques^ oMappStatistiques;

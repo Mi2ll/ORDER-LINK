@@ -46,7 +46,7 @@ System::String^ NS_Comp_Mappage::CLmapStatistiques::SelectChiffreAffaire() {
 }
 
 System::String^ NS_Comp_Mappage::CLmapStatistiques::SelectClientMontantAchat() {
-    return "SELECT SUM(paiement.montant_paye) AS Montant_total_dépensé "
+    return "SELECT SUM(paiement.montant_paye) AS Montant_total_dÃ©pensÃ© "
         "FROM paiement "
         "FULL OUTER JOIN Commande ON Commande.id_paiement = paiement.id_paiement "
         "WHERE Commande.id_client = " + this->id_client + ";";
