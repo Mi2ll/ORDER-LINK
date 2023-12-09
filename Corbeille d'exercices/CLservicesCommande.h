@@ -9,7 +9,7 @@
 
 namespace NS_Comp_Svc
 {
-    ref class CLservicesCommande
+    public ref class CLservicesCommande
     {
     private:
         NS_Comp_Data::CLcad^ oCad;

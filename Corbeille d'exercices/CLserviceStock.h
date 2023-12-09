@@ -5,7 +5,7 @@
 
 namespace NS_Comp_Svc
 {
-    ref class CLservicestock
+    public ref class CLservicestock
     {
     private:
         NS_Comp_Data::CLcad^ oCad;

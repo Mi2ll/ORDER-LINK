@@ -4,7 +4,7 @@
 
 namespace NS_Comp_Mappage
 {
-    ref class CLmapLigneCommande
+    public ref class CLmapLigneCommande
     {
     private:
         System::String^ sSql;

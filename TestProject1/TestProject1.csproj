@@ -21,7 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Corbeille d'exercices\Corbeille d'exercices.vcxproj" />
+    <Reference Include="testWin">
+      <HintPath>..\x64\Debug\testWin.exe</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

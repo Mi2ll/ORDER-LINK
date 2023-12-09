@@ -1,7 +1,7 @@
 #pragma once
 
 namespace NS_Comp_Svc{
-	ref class CLSimulation {
+	public ref class CLSimulation {
 	private:
 		System::String^ tva;
 		System::String^ marge;
@@ -23,6 +23,6 @@ namespace NS_Comp_Svc{
 		float remiseCalcul(float);
 		float demarqueCalcul(float);
 
-		delegate float FonctionMembreDelegate(float); // Déclaration d'un delegate
+		delegate float FonctionMembreDelegate(float); // DÃ©claration d'un delegate
 	};
 }

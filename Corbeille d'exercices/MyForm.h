@@ -156,21 +156,10 @@ namespace interfaceprojetpoo {
 
 
 
-
-
-
 	private: System::Windows::Forms::GroupBox^ gb_options_personnel;
 
 
 	private: System::Windows::Forms::Button^ btn_confirmer_personnel;
-
-
-
-
-
-
-
-
 
 
 

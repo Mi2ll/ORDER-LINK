@@ -6,7 +6,7 @@
 
 namespace NS_Comp_Svc
 {
-	ref class CLservicesClient
+	public ref class CLservicesClient
 	{
 	private:
 		NS_Comp_Data::CLcad^ oCad;

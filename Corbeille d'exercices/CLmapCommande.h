@@ -2,7 +2,7 @@
 
 namespace NS_Comp_Mappage
 {
-    ref class CLmapCommande
+    public ref class CLmapCommande
     {
     private:
         System::String^ sSql;

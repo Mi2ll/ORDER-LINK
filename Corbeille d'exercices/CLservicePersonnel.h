@@ -6,8 +6,7 @@
 
 namespace NS_Comp_Svc
 {
-	ref class CLservicesPersonnel
-	{
+	public ref class CLservicesPersonnel {
 	private:
 		NS_Comp_Data::CLcad^ oCad;
 		NS_Comp_Mappage::CLmapPersonnel^ oMappPersonnel;
