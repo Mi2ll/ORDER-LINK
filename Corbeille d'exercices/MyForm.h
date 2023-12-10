@@ -2484,9 +2484,14 @@ private: System::Windows::Forms::Button^ button1;
 	}
 	private: System::Void btn_confirmer_personnel_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (this->rb_nouveau_personnel->Checked) {
-			int id;	
-			id = this->oSvc->ajouterUnPersonnel(this->txtbx_nom_personnel->Text, this->txtbx_prenom_personnel->Text, Convert::ToInt32(this->id_superieur->Text), this->date_embauche->Text, this->txtbx_numero_adresse->Text, this->txtbx_nom_rue->Text, this->txtbx_code_postal->Text, this->txtbx_ville->Text);
-			this->id_personnel->Text = Convert::ToString(id);
+			int id;
+			try {
+				id = this->oSvc->ajouterUnPersonnel(this->txtbx_nom_personnel->Text, this->txtbx_prenom_personnel->Text, Convert::ToInt32(this->id_superieur->Text), this->date_embauche->Text, this->txtbx_numero_adresse->Text, this->txtbx_nom_rue->Text, this->txtbx_code_postal->Text, this->txtbx_ville->Text);
+				this->id_personnel->Text = Convert::ToString(id);
+			}
+			catch (Exception^ e) {
+				MessageBox::Show("Un ou plusieurs champs vides.");
+			}
 		}
 		if (this->rb_modifier_personnel->Checked) {
 			this->oSvc->modifierUnPersonnel(Int32::Parse(this->id_personnel->Text), this->txtbx_nom_personnel->Text, this->txtbx_prenom_personnel->Text, Convert::ToInt32(this->id_superieur->Text), this->date_embauche->Text, this->txtbx_numero_adresse->Text, this->txtbx_nom_rue->Text, this->txtbx_code_postal->Text, this->txtbx_ville->Text);
