@@ -29,7 +29,7 @@ o	La gestion des statistiques
 ## BDD sur SQL Server Management Studio
 ![image](https://github.com/Mi2ll/ORDER-LINK/assets/119260964/09a696fb-89d1-461a-a78d-57f2b727173e)
 
-
+Les requêtes SQL sont directement implementées dans notre code. 
 
 ## Test unitaires
 
