@@ -11,8 +11,10 @@ Réalisation d'une architecture de type client-serveur composée d’une applica
 
 Les processus visés par notre application sont :
 
-o	La gestion du personnel
-o	La gestion des clients
-o	La gestion des commandes
-o	La gestion du stock
-o	La gestion des statistiques
+o	La gestion du personnel  
+o	La gestion des clients  
+o	La gestion des commandes  
+o	La gestion du stock  
+o	La gestion des statistiques  
+
+
