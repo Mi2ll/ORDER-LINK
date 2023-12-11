@@ -1,7 +1,11 @@
 # ORDER-LINK
 
 Réalisation d'une architecture de type client-serveur composée d’une application et d’une base de données.  
-Application de gestion de vente en ligne de composants électroniques.
+Application de gestion de vente en ligne de composants électroniques.  
+
+o Interface graphique  
+o BDD  
+o Tests Unitaire  
 
 ## Interface graphique 
 
