@@ -145,19 +145,19 @@ void NS_Comp_Svc::CLservicesCommande::ajouterLigneCommande(System::String^ artic
 	int id_paiement = System::Convert::ToInt32(this->oCad->actionRowsID(sql));
 	this->oMappPaiement->setIdPaiement(id_paiement);
 
-	// application de la réduction (15% / 10% / 5%)
+	// application de la rï¿½duction (15% / 10% / 5%)
 
-	// Récupérer l'id du client qui a fait la commande
+	// Rï¿½cupï¿½rer l'id du client qui a fait la commande
 	System::String^ sqlgetIDclient = "SELECT Id_Client FROM Commande WHERE Id_Commande = " + id_commande + ";";
 	int idclient = System::Convert::ToInt32(this->oCad->actionRowsID(sqlgetIDclient));
 
-	// Nombre de commandes qu'a effectué le client
+	// Nombre de commandes qu'a effectuï¿½ le client
 	System::String^ sqlgetNmbCommandes = "SELECT COUNT(*) AS Nmb_commandes_client FROM[Client]"
 		+ " JOIN[Commande] ON[Client].Id_Client = [Commande].Id_Client"
 		+ " WHERE[Client].Id_Client = " + idclient + ";";
 	int nmbCommandesClient = System::Convert::ToInt32(this->oCad->actionRowsID(sqlgetNmbCommandes));
 
-	// Check si la commande a été réalisé le jour de naissance du client
+	// Check si la commande a ï¿½tï¿½ rï¿½alisï¿½ le jour de naissance du client
 	sql = "SELECT Reduction FROM [Commande] WHERE Id_Commande =" + id_commande + ";";
 	int checkReduction = System::Convert::ToInt32(this->oCad->actionRowsID(sql));
 	int p = System::Convert::ToInt32(prix);
@@ -188,7 +188,7 @@ int NS_Comp_Svc::CLservicesCommande::hasReduction(int id_client, System::String^
 
 	int longueur = date_commande->Length;
 
-	// Obtention les 5 derniers caractères
+	// Obtention les 5 derniers caractï¿½res
 	int positionDebut = (longueur > 5) ? longueur - 5 : 0;
 	System::String^ MDcmd = date_commande->Substring(positionDebut);
 

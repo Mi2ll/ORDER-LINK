@@ -3,7 +3,7 @@
 
 NS_Comp_Data::CLcad::CLcad(void)
 {
-    this->sCnx = "Data Source=LNGROPU;Initial Catalog= Projet_POO_V2;Integrated Security=True";
+    this->sCnx = "Data Source=ROBINZ;Initial Catalog= Projet_POO_V2;Integrated Security=True";
 
     this->sSql = "Rien";
 

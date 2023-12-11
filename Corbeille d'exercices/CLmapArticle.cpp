@@ -9,7 +9,7 @@ System::String^ NS_Comp_Mappage::CLmapArticle::Insert() {
 }
 
 System::String^ NS_Comp_Mappage::CLmapArticle::Update(float prix, System::String^ date) {
-	return "UPDATE Article SET nom_article = '" + this->NomArticle + "', qte_stock = '" + this->qte_stock + "', seuil_reappro = '" + this->seuil_reappro + "', prix_ht = '" + this->prix_ht + "', tva = '" + this->tva + "', nature = '" + this->nature + "', couleur = '" + this->couleur + "' WHERE id_article = " + this->Id_article + "; INSERT INTO historique (id_article, date, prix_ht) VALUES (" + this->Id_article + ",'" + date + "', " + prix + ");";
+	return "UPDATE Article SET nom_article = '" + this->NomArticle + "', qte_stock = '" + this->qte_stock + "', seuil_reappro = '" + this->seuil_reappro + "', prix_ht = '" + this->prix_ht + "', tva = '" + this->tva + "', nature = '" + this->nature + "', couleur = '" + this->couleur + "' WHERE id_article = " + this->Id_article + "; INSERT INTO historique (id_article, date, prix) VALUES (" + this->Id_article + ",'" + date + "', " + prix + ");";
 
 }
 
