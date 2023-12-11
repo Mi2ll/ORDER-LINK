@@ -140,7 +140,7 @@ CREATE TABLE Ligne_commande(
 CREATE TABLE Historique(
     id_historique INT IDENTITY(1,1) PRIMARY KEY,
     id_article    INT NULL,
-    date         DATE NULL,
+    [date]         DATE NULL,
     prix_ht      FLOAT NULL
 );
 
