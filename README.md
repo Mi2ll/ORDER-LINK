@@ -17,6 +17,7 @@ o	La gestion des statistiques
 
 ## Gestion du personnel 
 ![](https://media.discordapp.net/attachments/429783640361140225/1183768396320473180/image.png?ex=6589893b&is=6577143b&hm=9595558c42ffa214b5b277a1a8c743c6622882a884d35291e9ef014715ba3cb8&=&format=webp&quality=lossless&width=1136&height=623)
+
 ## Gestion des clients
 ![](https://media.discordapp.net/attachments/429783640361140225/1183771222501232761/image.png?ex=65898bdc&is=657716dc&hm=3c7cd46518ff25b58138f92d90857b343a30eab254afcde003a607ca832a6a0e&=&format=webp&quality=lossless&width=1142&height=622)
 ## Gestion des commandes
