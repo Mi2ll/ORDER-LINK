@@ -65,5 +65,86 @@ o	Simuler des variations de valeurs commerciales pour en déduire la valeur du s
 
 Les requêtes SQL sont directement implementées dans notre code. 
 
+## Création de la BDD 
+
+```sql
+CREATE TABLE Adresse(
+   Id_Adresse INT IDENTITY(1,1) PRIMARY KEY,
+   numero VARCHAR(50),
+   rue VARCHAR(50),
+   code_postal VARCHAR(50),
+   ville VARCHAR(50)
+);
+
+CREATE TABLE Article(
+   Id_Article INT IDENTITY(1,1) PRIMARY KEY,
+   nom_article VARCHAR(50),
+   qte_stock INT,
+   seuil_reappro INT,
+   prix_ht DECIMAL(15,2),
+   tva DECIMAL(15,2),
+   nature VARCHAR(50),
+   couleur VARCHAR(50)
+);
+
+CREATE TABLE Paiement(
+   Id_paiement INT IDENTITY(1,1) PRIMARY KEY,
+   date_paiement DATE,
+   montant_paye DECIMAL(15,2),
+   montant_ht DECIMAL(15,2),
+   tva DECIMAL(15,2)
+);
+
+CREATE TABLE Personnel(
+   Id_Personnel INT IDENTITY(1,1) PRIMARY KEY,
+   nom_personnel VARCHAR(50),
+   prenom_personnel VARCHAR(50),
+   date_embauche DATE,
+   id_superieur INT,
+   Id_Adresse INT NOT NULL,
+   FOREIGN KEY(Id_Adresse) REFERENCES Adresse(Id_Adresse)
+);
+
+CREATE TABLE Client(
+   Id_Client INT IDENTITY(1,1) PRIMARY KEY,
+   nom_client VARCHAR(50),
+   prenom_client VARCHAR(50),
+   date_naissance DATE,
+   Id_Adresse_facture INT NOT NULL,
+   Id_Adresse_livre INT NOT NULL,
+   FOREIGN KEY(Id_Adresse_facture) REFERENCES Adresse(Id_Adresse),
+   FOREIGN KEY(Id_Adresse_livre) REFERENCES Adresse(Id_Adresse)
+);
+
+CREATE TABLE Commande(
+   Id_Commande INT IDENTITY(1,1) PRIMARY KEY,
+   reference VARCHAR(50),
+   date_cmd DATE,
+   date_livraison DATE,
+   Id_paiement INT NOT NULL,
+   Id_Client INT NOT NULL,
+   reduction INT,
+   FOREIGN KEY(Id_paiement) REFERENCES paiement(Id_paiement),
+   FOREIGN KEY(Id_Client) REFERENCES Client(Id_Client)
+);
+
+CREATE TABLE Ligne_commande(
+   Id_ligne_commande INT IDENTITY(1,1) PRIMARY KEY,
+   qte_commandee INT,
+   Id_Article INT NOT NULL,
+   Id_Commande INT NOT NULL,
+   FOREIGN KEY(Id_Article) REFERENCES Article(Id_Article),
+   FOREIGN KEY(Id_Commande) REFERENCES Commande(Id_Commande)
+);
+
+CREATE TABLE Historique(
+    id_historique INT IDENTITY(1,1) PRIMARY KEY,
+    id_article    INT NULL,
+    date         DATE NULL,
+    prix_ht      FLOAT NULL
+);
+
+```
+  
 ## Test unitaires
 
