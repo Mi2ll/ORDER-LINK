@@ -147,7 +147,9 @@ CREATE TABLE Historique(
 ```
   
 ## Test unitaires
+![image](https://github.com/Mi2ll/ORDER-LINK/assets/120178295/f3b52192-95de-4f40-9306-ccfa7257f7e3)
 
+Pour le personnel, nous avons fait des tests unitaires afin de vérifier si tout marche correctement.  
 ```cs
 using System.Data.SqlClient;
 using NS_Comp_Svc;
@@ -483,7 +485,4 @@ namespace TestProject1
     }
 }
 ```
-
-![image](https://github.com/Mi2ll/ORDER-LINK/assets/120178295/f3b52192-95de-4f40-9306-ccfa7257f7e3)
-
 
