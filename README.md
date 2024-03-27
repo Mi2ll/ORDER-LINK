@@ -469,24 +469,6 @@ namespace TestProject1
                 AssertDataRowMatchesExpValues(resultDataSet.Tables[dataTableName]?.Rows[0], nom, prenom, id_superieur, numero_rue, nom_rue, code_postal, ville, date_embauche);
             }
         }
-
-        [Test]
-        public void DisplayStaff()
-        {
-            string SqlQuery = "";
-
-            using (var transaction = new TransactionScope())
-            {
-                // rechercher un personnel sans nom indiqué revient à afficher le personnel en entier
-                string dataTableName = "Rsl";
-                DataSet resultDataSet = svcPers.rechercherUnPersonnel(dataTableName, nom, prenom);
-
-                AssertDataRowMatchesExpValues(resultDataSet.Tables[dataTableName]?.Rows[0], "ZUILI", "Robin", 0, "153", "Rue Beauvoisine", "76000", "Rouen", "2023-12-08");
-                AssertDataRowMatchesExpValues(resultDataSet.Tables[dataTableName]?.Rows[1], "ROULLAND", "Nathan", 0, "55", "Rue du carefour du lin", "76560", "Doudeville", "2023-07-04");
-                AssertDataRowMatchesExpValues(resultDataSet.Tables[dataTableName]?.Rows[2], "ARON", "Noa", 0, "98", "Rue du langage", "12588", "Crypté", "2023-07-04");
-                AssertDataRowMatchesExpValues(resultDataSet.Tables[dataTableName]?.Rows[3], "AJROUCHE", "Maël", 0, "98", "Rue des avatars", "12588", "BozoCity", "2023-07-04");
-            }
-        }
     }
 }
 ```
